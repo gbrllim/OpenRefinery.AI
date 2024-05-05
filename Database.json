@@ -47,14 +47,14 @@
   },
   "subjects": {
     "<SubjectID1>": {
-      "subject": "I need to reset my password",
+      "subject": "I need to update my password",
       "paraphrases_needed": 100,
       "validations_needed": 20,
       "paraphrases": [
-        "Paraphrases 1",
-        "Paraphrases 2",
-        "Paraphrases 3",
-        "Paraphrases 4"
+        "How can I update my password",
+        "Can I change my password",
+        "I want to replace my password",
+        "Can I modify my password"
       ],
       "validations": [
         [13, 7],
@@ -63,17 +63,17 @@
         [20, 0]
       ],
       "status": "in-progress/completed",
-      "completion_date": "YYYY-MM-DD"
+      "completion_date": ""
     },
     "<SubjectID2>": {
       "subject": "I want to change my profile picture",
       "paraphrases_needed": 100,
       "validations_needed": 20,
       "paraphrases": [
-        "Paraphrases 1",
-        "Paraphrases 2",
-        "Paraphrases 3",
-        "Paraphrases 4"
+        "Where to update my profile picture",
+        "Can I add a new profile photo",
+        "How do I change my profile image",
+        "I want to update my display photo"
       ],
       "validations": [
         [13, 7],
@@ -82,7 +82,7 @@
         [20, 0]
       ],
       "status": "in-progress/completed",
-      "completion_date": "YYYY-MM-DD"
+      "completion_date": ""
     }
   }
 }

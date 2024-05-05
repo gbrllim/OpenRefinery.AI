@@ -19,17 +19,15 @@ export const Auth = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user }}>
-      {user !== undefined && user !== null ? (
+      {children}
+      {/* {user !== undefined && user !== null ? (
         <div>
           {children}
-          <p>{console.log(user)}</p>
-          <p>{user.key}</p>
-
           <Logout />
         </div>
       ) : (
         <Login />
-      )}
+      )} */}
     </AuthContext.Provider>
   );
 };

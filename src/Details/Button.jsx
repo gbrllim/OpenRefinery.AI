@@ -1,0 +1,13 @@
+const Button = ({ label, handleClick, disabled, add }) => {
+  return (
+    <button
+      onClick={handleClick}
+      disabled={disabled}
+      className={`${add} h-12 w-24 rounded-lg border-none bg-primary text-black hover:translate-y-[-2px] hover:bg-secondary disabled:translate-y-0 disabled:opacity-30`}
+    >
+      {label}
+    </button>
+  );
+};
+
+export default Button;

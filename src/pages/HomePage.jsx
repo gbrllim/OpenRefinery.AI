@@ -1,22 +1,11 @@
 import { Background } from "../Background";
 import { Table } from "../Table";
 import { Modal } from "../Modal";
-import { initJuno } from "@junobuild/core";
-import { Auth } from "../Auth";
-import { useEffect } from "react";
 import { Footer } from "../Footer";
 //-----------Components-----------//
-import NavBar from "../components/NavBar";
+import NavBar from "../Components/NavBar";
 
 const HomePage = () => {
-  // TODO: STEP_1_INITIALIZATION
-  useEffect(() => {
-    (async () =>
-      await initJuno({
-        satelliteId: "vzxr6-nqaaa-aaaal-aja7q-cai",
-      }))();
-  }, []);
-
   return (
     <>
       <NavBar />
@@ -26,17 +15,13 @@ const HomePage = () => {
             OPENJIO.AI
           </h1>
           <p className="py-4">Earn now</p>
-
-          <Auth>
-            <Table />
-
-            <Modal />
-          </Auth>
+          <Table />
+          <Modal />
         </main>
 
         <Footer />
 
-        <Background />
+        {/* <Background /> */}
       </div>
     </>
   );

@@ -13,7 +13,7 @@ export const Button = ({ children, onClick, disabled = false }) => {
 };
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
+  children: PropTypes.node,
+  onClick: PropTypes.func,
   disabled: PropTypes.bool,
 };
