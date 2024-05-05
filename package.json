@@ -14,7 +14,8 @@
     "@junobuild/core": "^0.0.46",
     "nanoid": "^5.0.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
     "@junobuild/config": "^0.0.4",

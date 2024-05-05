@@ -39,12 +39,12 @@ export const Modal = () => {
         const filename = `${user.key}-${file.name}`;
 
         // TODO: STEP_7_UPLOAD_FILE
-        const downloadUrl = undefined;
-        // const { downloadUrl } = await uploadFile({
-        //   collection: "images",
-        //   data: file,
-        //   filename,
-        // });
+        // const downloadUrl = undefined;
+        const { downloadUrl } = await uploadFile({
+          collection: "images",
+          data: file,
+          filename,
+        });
 
         url = downloadUrl;
       }
@@ -59,12 +59,11 @@ export const Modal = () => {
           key,
           data: {
             text: inputText,
+            // TODO: STEP_8_ADD_REFERENCE
+            ...(url !== undefined && { url }),
           },
         },
       });
-
-      // TODO: STEP_8_ADD_REFERENCE
-      // ...(url !== undefined && { url }),
 
       setShowModal(false);
 

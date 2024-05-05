@@ -1,0 +1,88 @@
+{
+  "users": {
+    "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe": {
+      "email": "pichu@gmail.com",
+      "username": "pichu",
+      "profile_pic": "https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe-1f680.png",
+      "created_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
+      "joined_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
+      "job_count": 201,
+      "total_earnings": 19.95
+    },
+    "8c9ecc3fd945ffde07cdde70aa3260aa30e16c485fa40174582d535fe62a18d6": {
+      "email": "dongdong@yahoo.com",
+      "username": "ktomygd",
+      "profile_pic": "https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe-1f680.png",
+      "created_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
+      "joined_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
+      "job_count": 1337,
+      "total_earnings": 420.42
+    }
+  },
+  "projects": {
+    "<ProjectID1>": {
+      "title": "Fintech App",
+      "creation_date": "05-05-2024",
+      "sponsor_id": "<userid1>",
+      "builders_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "validators_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "subjects": ["<SubjectID1>", "<SubjectID2>", "<SubjectID3>"],
+      "languages": ["English", "Chinese"],
+      "builder_payout": 0.2,
+      "validator_payout": 0.01,
+      "time_required_min": 5
+    },
+    "<ProjectID2>": {
+      "title": "Healthcare chatbot",
+      "creation_date": "11-05-2024",
+      "sponsor_id": "<userid1>",
+      "builders_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "validators_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "subjects": ["<SubjectID1>", "<SubjectID2>", "<SubjectID3>"],
+      "languages": ["English", "Spanish"],
+      "builder_payout": 0.2,
+      "validator_payout": 0.01,
+      "time_required_min": 15
+    }
+  },
+  "subjects": {
+    "<SubjectID1>": {
+      "subject": "I need to reset my password",
+      "paraphrases_needed": 100,
+      "validations_needed": 20,
+      "paraphrases": [
+        "Paraphrases 1",
+        "Paraphrases 2",
+        "Paraphrases 3",
+        "Paraphrases 4"
+      ],
+      "validations": [
+        [13, 7],
+        [2, 5],
+        [4, 2],
+        [20, 0]
+      ],
+      "status": "in-progress/completed",
+      "completion_date": "YYYY-MM-DD"
+    },
+    "<SubjectID2>": {
+      "subject": "I want to change my profile picture",
+      "paraphrases_needed": 100,
+      "validations_needed": 20,
+      "paraphrases": [
+        "Paraphrases 1",
+        "Paraphrases 2",
+        "Paraphrases 3",
+        "Paraphrases 4"
+      ],
+      "validations": [
+        [13, 7],
+        [2, 5],
+        [4, 2],
+        [20, 0]
+      ],
+      "status": "in-progress/completed",
+      "completion_date": "YYYY-MM-DD"
+    }
+  }
+}
