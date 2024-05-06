@@ -10,6 +10,7 @@ const NavBar = () => {
 
   return (
     <nav className="m-2 flex flex-row gap-2">
+      <h1 className="text-4xl font-bold">OPENREFINERY.AI</h1>
       <Button>
         <NavLink to="/"> Home</NavLink>
       </Button>

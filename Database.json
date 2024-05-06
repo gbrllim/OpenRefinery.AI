@@ -22,67 +22,70 @@
   "projects": {
     "<ProjectID1>": {
       "title": "Fintech App",
-      "creation_date": "05-05-2024",
-      "sponsor_id": "<userid1>",
-      "builders_id": ["<userid1>", "<userid1>", "<userid1>"],
-      "validators_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "creator_id": "<userid1>",
+      "miners_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "inspectors_id": ["<userid1>", "<userid1>", "<userid1>"],
       "subjects": ["<SubjectID1>", "<SubjectID2>", "<SubjectID3>"],
       "languages": ["English", "Chinese"],
-      "builder_payout": 0.2,
-      "validator_payout": 0.01,
+      "miner_payout": 0.2,
+      "inspector_payout": 0.01,
       "time_required_min": 5
     },
     "<ProjectID2>": {
       "title": "Healthcare chatbot",
-      "creation_date": "11-05-2024",
-      "sponsor_id": "<userid1>",
-      "builders_id": ["<userid1>", "<userid1>", "<userid1>"],
-      "validators_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "creator_id": "<userid1>",
+      "miners_id": ["<userid1>", "<userid1>", "<userid1>"],
+      "inspectors_id": ["<userid1>", "<userid1>", "<userid1>"],
       "subjects": ["<SubjectID1>", "<SubjectID2>", "<SubjectID3>"],
       "languages": ["English", "Spanish"],
-      "builder_payout": 0.2,
-      "validator_payout": 0.01,
+      "miner_payout": 0.2,
+      "inspector_payout": 0.01,
       "time_required_min": 15
     }
   },
   "subjects": {
-    "<SubjectID1>": {
+    "<subject_id_1>": {
       "subject": "I need to update my password",
       "paraphrases_needed": 100,
       "validations_needed": 20,
       "paraphrases": [
-        "How can I update my password",
-        "Can I change my password",
-        "I want to replace my password",
-        "Can I modify my password"
+        "transaction_paraphrase_id_1",
+        "transaction_paraphrase_id_2",
+        "transaction_paraphrase_id_3",
+        "transaction_paraphrase_id_4"
       ],
-      "validations": [
-        [13, 7],
-        [2, 5],
-        [4, 2],
-        [20, 0]
-      ],
-      "status": "in-progress/completed",
+      "isMined": false,
+      "isValidated": true,
       "completion_date": ""
     },
-    "<SubjectID2>": {
+    "<subject_id_2>": {
       "subject": "I want to change my profile picture",
       "paraphrases_needed": 100,
       "validations_needed": 20,
       "paraphrases": [
-        "Where to update my profile picture",
-        "Can I add a new profile photo",
-        "How do I change my profile image",
-        "I want to update my display photo"
-      ],
-      "validations": [
-        [13, 7],
-        [2, 5],
-        [4, 2],
-        [20, 0]
+        "transaction_paraphrase_id_1",
+        "transaction_paraphrase_id_2",
+        "transaction_paraphrase_id_3",
+        "transaction_paraphrase_id_4"
       ],
       "status": "in-progress/completed",
       "completion_date": ""
+    }
+  },
+  "transactions_paraphrases": {
+    "transaction_paraphrase_id_1": {
+      "miner_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
+      "subject_id": "subject_id_1",
+      "paraphrase": "Where to update my profile picture",
+      "isApproved": true
+    }
+  },
+  "Transaction_inspections": {
+    "transaction_inspector_id_1": {
+      "inspector_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
+      "subject_id": "subject_id_1",
+      "transaction_paraphrase_id": "transaction_paraphrase_id_1",
+      "isValid": true
     }
   }
 }

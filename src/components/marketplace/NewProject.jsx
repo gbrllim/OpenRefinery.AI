@@ -1,5 +1,5 @@
 //-----------Library-----------//
-import { useState } from "react";
+import { useContext, useState } from "react";
 // import axios from "axios";
 import { setDoc } from "@junobuild/core";
 import { nanoid } from "nanoid";
@@ -7,13 +7,15 @@ import { nanoid } from "nanoid";
 //-----------Components-----------//
 import InputText from "../../Details/InputText.jsx";
 // import InputDate from "../../Details/InputDate.jsx";
-import Button from "../../Details/Button.jsx";
+import { Button } from "../../Button.jsx";
 import InputNumber from "../../Details/InputNumber.jsx";
 
 //-----------Utilities-----------//
-// import { bearerToken } from "../../Utilities/token";
+import { AuthContext } from "../../Auth.jsx";
 
 const NewProject = () => {
+  const { user } = useContext(AuthContext);
+
   const [formInfo, setFormInfo] = useState({
     title: "",
     sponsor_id: "",
@@ -66,11 +68,19 @@ const NewProject = () => {
       // Generate random id
       const key = nanoid();
 
+      const updatedFormInfo = {
+        ...formInfo,
+        sponsor_id: user.key, // Update with the sponsor id
+        creation_date: new Date().toISOString(), // Set creation_date to current date and time
+      };
+
+      console.log("Running");
+
       await setDoc({
         collection: "projects",
         doc: {
           key,
-          data: formInfo,
+          data: updatedFormInfo,
         },
       });
       document.getElementById("new_project_modal").close(); // Close modal if successful
@@ -86,7 +96,7 @@ const NewProject = () => {
         validator_payout: 0,
         creation_date: "", // Set to current date
       });
-      console.log("Uploaded Project", formInfo);
+      console.log("Uploaded Project", updatedFormInfo);
     } catch (err) {
       console.log(err);
     }
@@ -175,10 +185,11 @@ const NewProject = () => {
 
           <div className="mt-2 flex w-full justify-center">
             <Button
-              label="Create"
-              handleClick={postNewProject}
+              onClick={postNewProject}
               // disabled={!isFilled()}
-            />
+            >
+              Create
+            </Button>
             <div
               className={`flex items-center justify-center ${
                 formInfo.isBookmarked ? "text-red-500" : "text-text"

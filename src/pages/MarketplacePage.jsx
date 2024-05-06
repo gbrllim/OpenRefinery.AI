@@ -2,6 +2,7 @@
 
 import NavBar from "../Components/NavBar";
 import NewProject from "../Components/marketplace/NewProject";
+import Projects from "../Components/marketplace/Projects";
 
 const MarketplacePage = () => {
   return (
@@ -14,6 +15,7 @@ const MarketplacePage = () => {
           <NavBar />
         </div>
         <NewProject />
+        <Projects />
       </div>
     </>
   );
