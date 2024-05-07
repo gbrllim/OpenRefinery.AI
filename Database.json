@@ -29,48 +29,38 @@
       "languages": ["English", "Chinese"],
       "miner_payout": 0.2,
       "inspector_payout": 0.01,
-      "time_required_min": 5
+      "paraphrases_needed": 100,
+      "validations_needed": 20,
+      "time_required_min": 5,
+      "creation_date": "23/5/22"
     },
     "<ProjectID2>": {
       "title": "Healthcare chatbot",
       "creator_id": "<userid1>",
       "miners_id": ["<userid1>", "<userid1>", "<userid1>"],
       "inspectors_id": ["<userid1>", "<userid1>", "<userid1>"],
-      "subjects": ["<SubjectID1>", "<SubjectID2>", "<SubjectID3>"],
+      "subjects": ["SubjectID1", "<SubjectID2>", "<SubjectID3>"],
       "languages": ["English", "Spanish"],
       "miner_payout": 0.2,
       "inspector_payout": 0.01,
-      "time_required_min": 15
+      "paraphrases_needed": 100,
+      "validations_needed": 20,
+      "time_required_min": 15,
+      "creation_date": "23/5/22"
     }
   },
-  "subjects": {
-    "<subject_id_1>": {
-      "subject": "I need to update my password",
-      "paraphrases_needed": 100,
-      "validations_needed": 20,
-      "paraphrases": [
-        "transaction_paraphrase_id_1",
-        "transaction_paraphrase_id_2",
-        "transaction_paraphrase_id_3",
-        "transaction_paraphrase_id_4"
-      ],
-      "isMined": false,
-      "isValidated": true,
-      "completion_date": ""
-    },
-    "<subject_id_2>": {
-      "subject": "I want to change my profile picture",
-      "paraphrases_needed": 100,
-      "validations_needed": 20,
-      "paraphrases": [
-        "transaction_paraphrase_id_1",
-        "transaction_paraphrase_id_2",
-        "transaction_paraphrase_id_3",
-        "transaction_paraphrase_id_4"
-      ],
-      "status": "in-progress/completed",
-      "completion_date": ""
-    }
+  "subject": {
+    "id": "232323232323",
+    "title": "I need to update my password",
+    "paraphrases": [
+      "transaction_paraphrase_id_1",
+      "transaction_paraphrase_id_2",
+      "transaction_paraphrase_id_3",
+      "transaction_paraphrase_id_4"
+    ],
+    "isMined": false,
+    "isValidated": false,
+    "completion_date": ""
   },
   "transactions_paraphrases": {
     "transaction_paraphrase_id_1": {

@@ -6,9 +6,9 @@ import { nanoid } from "nanoid";
 
 //-----------Components-----------//
 import InputText from "../../Details/InputText.jsx";
-// import InputDate from "../../Details/InputDate.jsx";
-import { Button } from "../../Button.jsx";
+import { Button } from "../../Details/Button.jsx";
 import InputNumber from "../../Details/InputNumber.jsx";
+import InputSubjects from "../../Details/InputSubjects.jsx";
 
 //-----------Utilities-----------//
 import { AuthContext } from "../../Auth.jsx";
@@ -18,22 +18,81 @@ const NewProject = () => {
 
   const [formInfo, setFormInfo] = useState({
     title: "",
-    sponsor_id: "",
-    builders_id: [], // user_id
-    validators_id: [],
+    creator_id: "",
+    miners_id: [], // user_id
+    inspectors_id: [],
     subjects: [],
     languages: [],
-    builder_payout: 0,
-    validator_payout: 0,
+    miner_payout: 0,
+    inspector_payout: 0,
+    paraphrases_needed: 0,
+    validations_needed: 0,
     creation_date: "", // Set to current date
+  });
+
+  const [subject, setSubject] = useState({
+    id: "",
+    title: "",
+    paraphrases: [],
+    isMined: false,
+    isValidated: false,
+    completion_date: "",
   });
 
   const textChange = (e) => {
     const name = e.target.id;
     let value = e.target.value;
-    value = value.replace("$", "");
+    // value = value.replace("$", "");
     setFormInfo((prevState) => {
       return { ...prevState, [name]: value };
+    });
+  };
+
+  const subjectTextChange = (e) => {
+    const name = e.target.id;
+    let value = e.target.value;
+
+    const key = nanoid(); // Not an efficent way of adding id - changes with each text input
+
+    setSubject((prevState) => {
+      return { ...prevState, [name]: value, id: key };
+    });
+  };
+
+  const addSubject = (e) => {
+    e.preventDefault();
+
+    setFormInfo((prevState) => {
+      return { ...prevState, subjects: [...prevState.subjects, subject] };
+    });
+    console.log("Project", formInfo);
+
+    // Set to blank
+    setSubject({
+      id: "",
+      title: "",
+      paraphrases: [],
+      isMined: false,
+      isValidated: false,
+      completion_date: "",
+    });
+  };
+
+  // Input validation to prevent empty subjects
+  const isFilled = () => {
+    return subject.title.trim() !== "";
+  };
+
+  // Remove subject yet to push as a project
+  const deleteSubject = (id) => {
+    // Filter out the subject with the matching id
+    const updatedSubjects = formInfo.subjects.filter(
+      (subject) => subject.id !== id,
+    );
+
+    // Update formInfo with the filtered subjects
+    setFormInfo((prevState) => {
+      return { ...prevState, subjects: updatedSubjects };
     });
   };
 
@@ -70,11 +129,9 @@ const NewProject = () => {
 
       const updatedFormInfo = {
         ...formInfo,
-        sponsor_id: user.key, // Update with the sponsor id
+        creator_id: user.key, // Update with the sponsor id
         creation_date: new Date().toISOString(), // Set creation_date to current date and time
       };
-
-      console.log("Running");
 
       await setDoc({
         collection: "projects",
@@ -110,7 +167,7 @@ const NewProject = () => {
       >
         Create Project
       </button>
-      <dialog id="new_project_modal" className="modal  ">
+      <dialog id="new_project_modal" className="modal ">
         <div className="modal-box bg-slate-950 shadow-lg">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
@@ -131,22 +188,52 @@ const NewProject = () => {
 
             <p>Builder Payout: *</p>
             <InputNumber
-              id="builder_payout"
+              id="miner_payout"
               type="number"
               step="0.01"
               min="0.01"
               handleChange={textChange}
-              value={formInfo.builder_payout}
+              value={formInfo.miner_payout}
             />
 
             <p>Validator Payout: *</p>
             <InputNumber
-              id="validator_payout"
+              id="inspector_payout"
               type="number"
               step="0.01"
               min="0.01"
               handleChange={textChange}
-              value={formInfo.validator_payout}
+              value={formInfo.inspector_payout}
+            />
+
+            <p>Paraphrases Needed: *</p>
+            <InputNumber
+              id="paraphrases_needed"
+              type="number"
+              step="10"
+              min="20"
+              handleChange={textChange}
+              value={formInfo.paraphrases_needed}
+            />
+
+            <p>Validations Needed: *</p>
+            <InputNumber
+              id="validations_needed"
+              type="number"
+              step="1"
+              min="10"
+              handleChange={textChange}
+              value={formInfo.validations_needed}
+            />
+
+            <p>Time Required (min): *</p>
+            <InputNumber
+              id="time_required_min"
+              type="number"
+              step="5"
+              min="5"
+              handleChange={textChange}
+              value={formInfo.time_required_min}
             />
 
             <p>Languages: *</p>
@@ -175,12 +262,34 @@ const NewProject = () => {
             </select> */}
 
             <p className="">Subjects:</p>
-            <InputText
-              id="subjects"
+            <InputSubjects
+              id="title"
               placeholder="e.g. Singapore"
-              handleChange={textChange}
-              value={formInfo.subjects}
+              handleChange={subjectTextChange}
+              value={subject.title}
+              onClick={addSubject}
+              disabled={!isFilled()}
             />
+            <div></div>
+            {/* Display list of subjects adding */}
+            <ul>
+              {formInfo.subjects.map((subject) => {
+                return (
+                  <li
+                    key={subject.id}
+                    className="flex justify-between bg-lavender-blue-200 rounded-lg px-2 my-1"
+                  >
+                    <label>{subject.title}</label>
+                    <button
+                      onClick={() => deleteSubject(subject.id)}
+                      className="text-sm hover:font-semibold"
+                    >
+                      Delete
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </form>
 
           <div className="mt-2 flex w-full justify-center">
@@ -190,18 +299,6 @@ const NewProject = () => {
             >
               Create
             </Button>
-            <div
-              className={`flex items-center justify-center ${
-                formInfo.isBookmarked ? "text-red-500" : "text-text"
-              }  hover:text-primary`}
-            >
-              {/* <button
-                className=" text-[28px] leading-none"
-                onClick={toggleIsBookmarked}
-              >
-                ♥︎
-              </button> */}
-            </div>
           </div>
         </div>
       </dialog>

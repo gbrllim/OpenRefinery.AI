@@ -1,5 +1,5 @@
 import { signOut } from "@junobuild/core";
-import { Button } from "./Button";
+import { Button } from "./Details/Button";
 
 export const Logout = () => {
   //TODO: STEP_3_AUTH_SIGN_OUT

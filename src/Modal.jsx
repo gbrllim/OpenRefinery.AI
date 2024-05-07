@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { setDoc, uploadFile } from "@junobuild/core";
 import { AuthContext } from "./Auth";
 import { nanoid } from "nanoid";
-import { Button } from "./Button";
+import { Button } from "./Details/Button";
 import { Backdrop } from "./Backdrop";
 
 export const Modal = () => {
