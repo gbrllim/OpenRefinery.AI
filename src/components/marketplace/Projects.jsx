@@ -1,10 +1,10 @@
-//-----------Imports-----------//
+//-----------Libraries-----------//
 import { useContext, useEffect, useState } from "react";
 import { listDocs } from "@junobuild/core";
+import { NavLink } from "react-router-dom";
 
 //-----------Providers-----------//
 import { AuthContext } from "../../Auth";
-import { NavLink } from "react-router-dom";
 
 const Projects = () => {
   const { user } = useContext(AuthContext);
@@ -49,12 +49,12 @@ const Projects = () => {
         {items.map((item, index) => {
           const {
             key,
-            data: { title, sponsor_id, builder_payout },
+            data: { title, sponsor_id, miner_payout },
           } = item;
 
           return (
             <NavLink
-              to={key}
+              to={"/project/" + key}
               key={key}
               className="flex items-center gap-2 px-3 mb-4 border-black border-[3px] rounded-sm bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)]"
               role="row"
@@ -73,7 +73,7 @@ const Projects = () => {
                 {sponsor_id}
               </div>
               <div role="cell" className="line-clamp-3 overflow-hidden grow">
-                Payout: {builder_payout}
+                Payout: {miner_payout} 💎
               </div>
               {/* <div
                 role="cell"

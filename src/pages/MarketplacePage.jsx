@@ -18,7 +18,7 @@ const MarketplacePage = () => {
         <NewProject />
       </section>
       <Projects />
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 };

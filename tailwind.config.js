@@ -6,6 +6,14 @@ export default {
   },
   theme: {
     extend: {
+      colors: {
+        inspectorDark: "#4C85FB",
+        inspectorLight: "#94B5FC",
+        minerLight: "#F5BC73",
+        minerDark: "#F58853",
+        creatorLight: "#D2F2A4",
+        creatorDark: "#00C8A0",
+      },
       screens: {
         tall: { raw: "(min-height: 800px)" },
       },

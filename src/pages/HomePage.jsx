@@ -17,7 +17,7 @@ const HomePage = () => {
             Train AI. Earn Gems
           </h1>
           <p className="tracking-tight">Top decentralised crowdsourcing app</p>
-          <figure className="flex flex-row py-4">
+          <figure className="flex flex-row py-4 gap-2">
             <Button>Explore Projects</Button>
             <Button>Start Earning</Button>
           </figure>
