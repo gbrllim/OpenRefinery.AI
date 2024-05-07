@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage.jsx";
 import DashboardPage from "../pages/DashboardPage.jsx";
 import MarketplacePage from "../pages/MarketplacePage.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
+import ProjectPage from "../pages/ProjectPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,13 @@ const router = createBrowserRouter([
     path: "marketplace",
     element: <MarketplacePage />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: ":id",
+        element: <ProjectPage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
   // {
   //   path: "/",

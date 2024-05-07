@@ -4,6 +4,7 @@ import { listDocs } from "@junobuild/core";
 
 //-----------Providers-----------//
 import { AuthContext } from "../../Auth";
+import { NavLink } from "react-router-dom";
 
 const Projects = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,11 @@ const Projects = () => {
 
     setItems(items);
   };
+
+  useEffect(() => {
+    console.log("helloo");
+    getProjects();
+  }, []);
 
   // Check for user state
   useEffect(() => {
@@ -47,7 +53,8 @@ const Projects = () => {
           } = item;
 
           return (
-            <div
+            <NavLink
+              to={key}
               key={key}
               className="flex items-center gap-2 px-3 mb-4 border-black border-[3px] rounded-sm bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)]"
               role="row"
@@ -101,7 +108,7 @@ const Projects = () => {
 
                 <Delete item={item} reload={list} />
               </div> */}
-            </div>
+            </NavLink>
           );
         })}
       </div>

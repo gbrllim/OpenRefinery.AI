@@ -1,7 +1,11 @@
 import { signIn } from "@junobuild/core";
-import { Button } from "./Details/Button";
+// import { Button } from "./Details/Button";
 
 export const Login = () => {
   //TODO: STEP_2_AUTH_SIGN_IN
-  return <Button onClick={signIn}>Sign in!</Button>;
+  return (
+    <button className="btn" onClick={signIn}>
+      Connect Wallet
+    </button>
+  );
 };

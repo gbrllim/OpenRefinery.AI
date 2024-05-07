@@ -5,6 +5,7 @@ import { Footer } from "../Footer";
 //-----------Components-----------//
 import NavBar from "../Components/NavBar";
 import { Button } from "../Details/Button";
+import FaqPage from "../Components/Home/faqPage";
 
 const HomePage = () => {
   return (
@@ -44,11 +45,14 @@ const HomePage = () => {
           </h1>
           <p className="tracking-tight">Team, dream, mission</p>
         </section>
-        <section className="shadow-lg min-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
+        <section className="shadow-lg min-w-[80vw] max-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
           <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
             FAQ
           </h1>
-          <p className="tracking-tight">Frequently asked qns</p>
+          <p className="tracking-tight mb-2">Frequently asked qns</p>
+          <figure className="overflow-y-scroll max-h-[500px] mb-4 w-3/4">
+            <FaqPage />
+          </figure>
         </section>
         {/* <body>
           <Table />
