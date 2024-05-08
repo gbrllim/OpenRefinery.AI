@@ -11,8 +11,7 @@ import NavBar from "../Components/NavBar";
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
 import { getLastUpdatedText } from "../Utilities/formatting";
-import ProgressBar from "../Details/ProgressBar";
-
+import { ProgressBar } from "../Details/ProgressBar";
 const ProjectPage = () => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
@@ -36,33 +35,33 @@ const ProjectPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center">
+    <div className="flex min-h-screen w-full flex-col items-center">
       <NavBar />
-      <head className="mt-24 flex w-11/12 flex-col m-3">
-        <h1 className="text-3xl mb-2">Project: {item.title}</h1>
+      <head className="m-3 mt-24 flex w-11/12 flex-col">
+        <h1 className="mb-2 text-3xl">Project: {item.title}</h1>
         {/* Project details */}
-        <article className="flex flex-row gap-2 mb-2">
-          <figure className=" border-2 border-black p-2 leading-snug min-w-36 rounded-lg text-center hover:translate-y-[-2px]">
+        <article className="mb-2 flex flex-row gap-2">
+          <figure className=" min-w-36 rounded-lg border-2 border-black p-2 text-center leading-snug hover:translate-y-[-2px]">
             Available Tasks:
             <br />
             {item.subjects && <div>{item.subjects.length} 💼</div>}
           </figure>
-          <figure className=" border-2 p-2 border-black leading-snug min-w-36 rounded-lg text-center hover:translate-y-[-2px]">
+          <figure className=" min-w-36 rounded-lg border-2 border-black p-2 text-center leading-snug hover:translate-y-[-2px]">
             Paraphrases:
             <br />
             {item.paraphrases_needed} 💬
           </figure>
-          <figure className=" border-2 p-2 border-black leading-snug min-w-36 rounded-lg text-center hover:translate-y-[-2px]">
+          <figure className=" min-w-36 rounded-lg border-2 border-black p-2 text-center leading-snug hover:translate-y-[-2px]">
             Inspections:
             <br />
             {item.validations_needed} 🔍
           </figure>
-          <figure className=" border-2 p-2 border-black leading-snug min-w-36 rounded-lg text-center hover:translate-y-[-2px]">
+          <figure className=" min-w-36 rounded-lg border-2 border-black p-2 text-center leading-snug hover:translate-y-[-2px]">
             Miner Payout:
             <br />
             {item.miner_payout} 💎
           </figure>
-          <figure className=" border-2 p-2 border-black leading-snug min-w-36 rounded-lg text-center hover:translate-y-[-2px]">
+          <figure className=" min-w-36 rounded-lg border-2 border-black p-2 text-center leading-snug hover:translate-y-[-2px]">
             Inspector Payout: <br />
             {item.inspector_payout} 💎
           </figure>
@@ -70,7 +69,7 @@ const ProjectPage = () => {
         <p className="text-sm text-slate-700">
           Posted: {getLastUpdatedText(item.creation_date)}{" "}
         </p>
-        <p className="font-bold text-lg mt-2">
+        <p className="mt-2 text-lg font-bold">
           Task: Rephrase these requests for an FAQ page
         </p>
       </head>
@@ -80,10 +79,10 @@ const ProjectPage = () => {
             return (
               <figure
                 key={subject.id}
-                className="bg-slate-200 my-1 py-4 px-4 rounded-lg flex flex-row justify-between items-center"
+                className="my-1 flex flex-row items-center justify-between rounded-lg bg-slate-200 px-4 py-4"
               >
                 <div className="flex flex-row items-center">
-                  <p className="text-lg mr-4 bg-slate-400 text-white font-bold px-2">
+                  <p className="mr-4 bg-slate-400 px-2 text-lg font-bold text-white">
                     {index + 1}
                   </p>
                   {subject.title}
@@ -92,7 +91,8 @@ const ProjectPage = () => {
                   <figure className=" flex w-36 flex-col items-center justify-center">
                     <NavLink
                       to="mine"
-                      className="btn w-36 mb-1 text-white bg-minerDark hover:bg-minerLight"
+                      state={subject.id} // Send state to mine
+                      className="btn mb-1 w-36 bg-minerDark text-white hover:bg-minerLight"
                       disabled={false}
                     >
                       Mine 💬
@@ -105,7 +105,7 @@ const ProjectPage = () => {
                   </figure>
                   <figure className=" flex w-36 flex-col items-center justify-center">
                     <button
-                      className="btn w-36 mb-1 text-white bg-inspectorDark hover:bg-inspectorLight"
+                      className="btn mb-1 w-36 bg-inspectorDark text-white hover:bg-inspectorLight"
                       disabled={true}
                     >
                       Inspect 🔍
@@ -121,7 +121,8 @@ const ProjectPage = () => {
             );
           })}
       </body>
-      <Outlet />
+      {/* Outlet to minepage/inspectpage with proj data */}
+      <Outlet context={item} />
     </div>
   );
 };

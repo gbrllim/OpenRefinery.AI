@@ -271,14 +271,14 @@ const NewProject = () => {
                 return (
                   <li
                     key={subject.id}
-                    className="flex items-center justify-between bg-creatorDark rounded-lg px-2 my-1"
+                    className="my-1 flex items-center justify-between rounded-lg bg-creatorDark px-2"
                   >
                     <label className="text-sm text-white">
                       {subject.title}
                     </label>
                     <button
                       onClick={() => deleteSubject(subject.id)}
-                      className="text-xs hover:font-semibold text-white"
+                      className="text-xs text-white hover:font-semibold"
                     >
                       <svg
                         width="16"
