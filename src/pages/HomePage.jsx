@@ -9,15 +9,15 @@ import FaqPage from "../Components/Home/faqPage";
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex w-full flex-col items-center">
       <NavBar />
-      <div className="flex flex-col justify-center items-center">
-        <header className="shadow-lg min-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
-          <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
-            Train AI. Earn Gems. Refine.
+      <div className="flex flex-col items-center justify-center">
+        <header className="flex min-h-[80vh] min-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
+          <h1 className="py-2 text-5xl font-bold tracking-tight md:pt-24 md:text-5xl">
+            Train AI. Earn Gems. Refine. Beautify
           </h1>
           <p className="tracking-tight">Top decentralised crowdsourcing app</p>
-          <figure className="flex flex-row py-4 gap-2">
+          <figure className="flex flex-row gap-2 py-4">
             <Button>Explore Projects</Button>
             <Button>Start Earning</Button>
           </figure>
@@ -27,8 +27,8 @@ const HomePage = () => {
             Total of $3,532,231 paid out to users to date
           </p>
         </header>
-        <section className="shadow-lg min-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
-          <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
+        <section className="flex min-h-[80vh] min-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
+          <h1 className="py-2 text-5xl font-bold tracking-tight md:pt-24 md:text-5xl">
             Refine your data
           </h1>
           <p className="tracking-tight">
@@ -39,18 +39,18 @@ const HomePage = () => {
             <Button>Start Earning</Button>
           </figure>
         </section>
-        <section className="shadow-lg min-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
-          <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
+        <section className="flex min-h-[80vh] min-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
+          <h1 className="py-2 text-5xl font-bold tracking-tight md:pt-24 md:text-5xl">
             About us
           </h1>
           <p className="tracking-tight">Team, dream, mission</p>
         </section>
-        <section className="shadow-lg min-w-[80vw] max-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
-          <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
+        <section className="flex min-h-[80vh] min-w-[80vw] max-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
+          <h1 className="py-2 text-5xl font-bold tracking-tight md:pt-24 md:text-5xl">
             FAQ
           </h1>
-          <p className="tracking-tight mb-2">Frequently asked qns</p>
-          <figure className="overflow-y-scroll max-h-[500px] mb-4 w-3/4">
+          <p className="mb-2 tracking-tight">Frequently asked qns</p>
+          <figure className="mb-4 max-h-[500px] w-3/4 overflow-y-scroll">
             <FaqPage />
           </figure>
         </section>
