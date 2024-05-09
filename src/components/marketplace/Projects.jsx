@@ -38,7 +38,7 @@ const Projects = () => {
   }, [user]);
 
   return (
-    <div className="w-full max-w-2xl mt-8" role="table">
+    <div className="mt-8 w-full max-w-2xl" role="table">
       <div role="row">
         <span role="columnheader" aria-sort="none">
           Ongoing Projects
@@ -56,23 +56,23 @@ const Projects = () => {
             <NavLink
               to={"/project/" + key}
               key={key}
-              className="flex items-center gap-2 px-3 mb-4 border-black border-[3px] rounded-sm bg-white shadow-[5px_5px_0px_rgba(0,0,0,1)]"
+              className="mb-4 flex items-center gap-2 rounded-sm border-[3px] border-black bg-white px-3 shadow-[5px_5px_0px_rgba(0,0,0,1)]"
               role="row"
             >
               <span
                 role="cell"
                 aria-rowindex={index}
-                className="p-1 flex align-center min-w-max"
+                className="align-center flex min-w-max p-1"
               >
-                {index + 1} )
+                {index + 1}
               </span>
-              <div role="cell" className="line-clamp-3 overflow-hidden grow">
+              <div role="cell" className="line-clamp-3 grow overflow-hidden">
                 {title}
               </div>
-              <div role="cell" className="line-clamp-3 overflow-hidden grow">
+              <div role="cell" className="line-clamp-3 grow overflow-hidden">
                 {sponsor_id}
               </div>
-              <div role="cell" className="line-clamp-3 overflow-hidden grow">
+              <div role="cell" className="line-clamp-3 grow overflow-hidden">
                 Payout: {miner_payout} 💎
               </div>
               {/* <div

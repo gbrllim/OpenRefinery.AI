@@ -115,13 +115,6 @@ const NewProject = () => {
   //   );
   // };
 
-  // const toggleIsBookmarked = () => {
-  //   setFormInfo((prevState) => ({
-  //     ...prevState,
-  //     isBookmarked: !prevState.isBookmarked,
-  //   }));
-  // };
-
   const postNewProject = async () => {
     try {
       // Generate random id

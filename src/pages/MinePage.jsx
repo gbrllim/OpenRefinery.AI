@@ -2,87 +2,133 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { listDocs, getDoc, setDoc } from "@junobuild/core";
+import { getDoc, listDocs, setDoc } from "@junobuild/core";
+import { nanoid } from "nanoid";
 
 //-----------Components-----------//
-import { Button } from "../Details/Button";
 import { MineProgressBar } from "../Details/ProgressBar";
+import InputSubjects from "../Details/InputSubjects";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
-import { getLastUpdatedText } from "../Utilities/formatting";
-import InputText from "../Details/InputText";
-import InputSubjects from "../Details/InputSubjects";
 
 const MinePage = () => {
   const { user } = useContext(AuthContext);
-  const { id } = useParams();
-  const [subject, setSubject] = useState([]);
-  const [projectTitle, setProjectTitle] = useState("");
-  const [message, setMessage] = useState("temp response message");
 
-  const location = useLocation();
+  // Project Data
+  const { id } = useParams(); // Project ID
+  const [paraphraseCount, setParaphraseCount] = useState(0); // Parapharse_needed for proj
+  const [projectTitle, setProjectTitle] = useState("");
+
+  // Subject data
+  const [subject, setSubject] = useState([]);
+  const [paraphrases, setParaphrases] = useState([]);
+  const location = useLocation(); // Subject ID
+
+  // Other variables
+  const [message, setMessage] = useState("temp response message");
+  const [progress, setProgress] = useState(0);
 
   // Miner transaction format
   const [transaction, setTransaction] = useState({
-    id: "", // Tx id
     miner_id: "", // UserId
     subject_id: location.state,
     paraphrase: "",
-    isApproved: false,
+    isApproved: null,
+    approvalCount: 0,
   });
 
+  // Get subject data - for title
   const getSubject = async () => {
-    console.log("Getting subject", location.state);
     const item = await getDoc({
       collection: "projects",
       key: id,
     });
 
+    setParaphraseCount(item.data.paraphrases_needed);
     setProjectTitle(item.data.title);
 
     const filteredData = item.data.subjects.find(
       (subject) => subject.id === location.state,
     );
 
-    console.log("Retrieve subject", filteredData);
+    console.log("subject data", filteredData);
 
     setSubject(filteredData);
   };
 
   useEffect(() => {
     getSubject();
+    getParaphrase();
   }, []);
 
-  // Method - Add paraphases to subject
-  const updateParaphrase = async (myDoc, myNewData) => {
+  // Method - Add paraphases to subject and refresh list
+  const updateParaphrase = async () => {
     try {
-      // Retrieve the document from the collection
-      const item = await getDoc({
-        collection: "my_collection_key",
-        key: myDoc.key, // Assuming myDoc contains the document key
-      });
+      const para_id = nanoid();
 
-      // Update the 'subjects' array in the document
-      const updatedItem = {
-        ...item,
-        data: {
-          ...item.data,
-          subjects: myNewData,
-        },
+      const updatedData = {
+        ...transaction,
+        miner_id: user.key,
+        approvalCount: paraphraseCount,
       };
 
-      // Save the updated document back to the collection
       await setDoc({
-        collection: "my_collection_key",
-        doc: updatedItem,
+        collection: "paraphrases",
+        doc: {
+          key: para_id,
+          data: updatedData,
+        },
       });
 
-      // add transaction as well
+      console.log("Paraphrase updated successfully", updatedData);
 
-      console.log("Paraphrase updated successfully");
+      // Reset form to blank
+      setTransaction({
+        miner_id: "",
+        subject_id: location.state,
+        paraphrase: "",
+        isApproved: null,
+      });
+
+      getParaphrase();
     } catch (error) {
-      console.error("Error updating document:", error);
+      console.error("Error updating paraphrases:", error);
+    }
+  };
+
+  // get parahrase and check progress
+  const getParaphrase = async () => {
+    try {
+      const data = await listDocs({
+        collection: "paraphrases",
+      });
+
+      const filteredData = data.items.filter(
+        (item) => item.data.subject_id === location.state,
+      );
+
+      console.log("filter paraphrases", filteredData);
+
+      const taskProgress = filteredData.length / paraphraseCount;
+      console.log(taskProgress);
+
+      if (taskProgress !== Infinity) setProgress(taskProgress);
+
+      setParaphrases(filteredData);
+    } catch (error) {
+      console.error("Error retrieving paraphrases:", error);
+    }
+  };
+
+  // Table status for approval
+  const getApprovalStatus = (isApproved) => {
+    if (isApproved === null) {
+      return "Pending";
+    } else if (isApproved === true) {
+      return "Approved ✅";
+    } else {
+      return "Rejected ❌";
     }
   };
 
@@ -130,12 +176,12 @@ const MinePage = () => {
           <p className="translate-x-[-6px]">Project</p>
         </NavLink>
         <body className="m-28 flex w-full flex-row">
-          <section className="ml-20 flex w-2/3 flex-col">
+          <section className="ml-20 mr-8 flex w-2/3 flex-col">
             <h1 className="text-xl tracking-tight">{projectTitle}</h1>
             <p className=" text-3xl font-bold">
               Task: Rephrase these requests for an FAQ page
             </p>
-            <figure className="my-6 max-w-[95%] rounded-md bg-orange-100 px-4 py-2">
+            <figure className="my-6 rounded-md bg-orange-100 px-4 py-2">
               <p className=" animate-pulse text-3xl italic tracking-tight">
                 {subject.title}
               </p>
@@ -155,17 +201,42 @@ const MinePage = () => {
           <side className="mr-20 w-1/3 ">
             <h1 className="text-xl font-bold">Task Progress</h1>
             <p className="text-sm tracking-tight text-minerDark">
-              20% mining complete
+              {progress * 100}% mining complete
             </p>
             <MineProgressBar
-              progress={30}
+              progress={progress * 100}
               color="bg-minerDark"
               bar="bg-minerLight"
             />
             <p className="mt-1 text-[10px] text-slate-600">
               Subject ID:{subject.id}
             </p>
-            <figure>Responses</figure>
+            <div className=" mt-2 overflow-x-auto">
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr>
+                    <th>Responses</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* row 1 */}
+                  {paraphrases.map((paraphrase) => {
+                    return (
+                      <tr key={paraphrase.key}>
+                        <td className="text-xs tracking-tight">
+                          {paraphrase.data.paraphrase}
+                        </td>
+                        <td className="text-xs">
+                          {getApprovalStatus(paraphrase.data.isApproved)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </side>
         </body>
       </div>

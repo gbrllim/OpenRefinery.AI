@@ -52,12 +52,12 @@
   "subject": {
     "id": "232323232323",
     "title": "I need to update my password",
-    "paraphrases": [
-      "transaction_paraphrase_id_1",
-      "transaction_paraphrase_id_2",
-      "transaction_paraphrase_id_3",
-      "transaction_paraphrase_id_4"
-    ],
+    // "paraphrases": [
+    //   "transaction_paraphrase_id_1",
+    //   "transaction_paraphrase_id_2",
+    //   "transaction_paraphrase_id_3",
+    //   "transaction_paraphrase_id_4"
+    // ],
     "isMined": false,
     "isValidated": false,
     "completion_date": ""
@@ -67,7 +67,7 @@
       "miner_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
       "subject_id": "subject_id_1",
       "paraphrase": "Where to update my profile picture",
-      "isApproved": true
+      "isApproved": "null/true/false"
     }
   },
   "Transaction_inspections": {
@@ -75,7 +75,7 @@
       "inspector_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
       "subject_id": "subject_id_1",
       "transaction_paraphrase_id": "transaction_paraphrase_id_1",
-      "isValid": true
+      "isValid": "null/true/false"
     }
   }
 }
