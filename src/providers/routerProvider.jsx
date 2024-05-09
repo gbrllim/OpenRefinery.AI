@@ -8,6 +8,7 @@ import MarketplacePage from "../pages/MarketplacePage.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 import ProjectPage from "../pages/ProjectPage.jsx";
 import MinePage from "../pages/MinePage.jsx";
+import InspectPage from "../pages/InspectPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: "mine",
         element: <MinePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "inspect",
+        element: <InspectPage />,
         errorElement: <ErrorPage />,
       },
     ],

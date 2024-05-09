@@ -104,14 +104,16 @@ const ProjectPage = () => {
                     />
                   </figure>
                   <figure className=" flex w-36 flex-col items-center justify-center">
-                    <button
+                    <NavLink
+                      to="inspect"
+                      state={subject.id} // Send state to inspect
                       className="btn mb-1 w-36 bg-inspectorDark text-white hover:bg-inspectorLight"
-                      disabled={true}
+                      disabled={false}
                     >
                       Inspect 🔍
-                    </button>
+                    </NavLink>
                     <ProgressBar
-                      progress={100}
+                      progress={30}
                       color="bg-inspectorDark"
                       bar="bg-inspectorLight"
                     />
