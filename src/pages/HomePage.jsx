@@ -14,7 +14,7 @@ const HomePage = () => {
       <div className="flex flex-col justify-center items-center">
         <header className="shadow-lg min-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
           <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
-            Train AI. Earn Gems
+            Train AI. Earn Gems. Refine.
           </h1>
           <p className="tracking-tight">Top decentralised crowdsourcing app</p>
           <figure className="flex flex-row py-4 gap-2">

@@ -153,7 +153,7 @@ const InspectPage = () => {
       transition={{
         duration: 0.3,
         ease: "easeInOut",
-      }}
+      }} //animation
     >
       <div className="absolute left-1/2 top-1/2 z-30 flex h-full w-full -translate-x-1/2 -translate-y-[50%] transform flex-col items-center rounded-lg bg-white shadow-lg">
         <NavLink
@@ -176,7 +176,7 @@ const InspectPage = () => {
           <p className="translate-x-[-6px]">Project</p>
         </NavLink>
         <body className="m-28 flex w-full flex-row">
-          <section className="ml-20 mr-8 flex w-2/3 flex-col items-center">
+          <section className="ml-20 mr-8 flex w-2/3 flex-col items-center chat-end">
             <h1 className="w-full text-left text-xl tracking-tight">
               {projectTitle}
             </h1>
@@ -184,11 +184,11 @@ const InspectPage = () => {
               Task: Rephrase these requests for an FAQ page
             </p>
             <label className="mt-6 w-full text-left">Original Subject:</label>
-            <figure className=" w-full rounded-md bg-blue-100 px-4 py-2">
-              <p className="text-3xl italic tracking-tight">{subject.title}</p>
+            <figure className=" w-full rounded-md bg-inspectorLight px-4 py-2 chat-bubble text-black">
+              <p className="text-3xl italic tracking-tight">{subject.title}</p> 
             </figure>
             <label className="mt-6 w-full text-left">Paraphrase:</label>
-            <figure className=" w-full rounded-md bg-blue-100 px-4 py-2">
+            <figure className=" w-full rounded-md bg-inspectorDark px-4 py-2 chat-bubble">
               <p className=" animate-pulse text-3xl italic tracking-tight">
                 {subject.title}
               </p>
