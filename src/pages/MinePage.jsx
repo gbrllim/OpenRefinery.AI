@@ -31,9 +31,11 @@ const MinePage = () => {
 
   // Miner transaction format
   const [transaction, setTransaction] = useState({
+    project_title: "",
     miner_id: "", // UserId
     subject_id: location.state,
     paraphrase: "",
+    gem_payout: 0,
     isApproved: null,
     approvalCount: 0,
   });

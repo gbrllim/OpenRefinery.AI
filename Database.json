@@ -52,30 +52,39 @@
   "subject": {
     "id": "232323232323",
     "title": "I need to update my password",
-    // "paraphrases": [
-    //   "transaction_paraphrase_id_1",
-    //   "transaction_paraphrase_id_2",
-    //   "transaction_paraphrase_id_3",
-    //   "transaction_paraphrase_id_4"
-    // ],
     "isMined": false,
     "isValidated": false,
     "completion_date": ""
   },
-  "transactions_paraphrases": {
+  "paraphrases": {
     "transaction_paraphrase_id_1": {
+      "project_title": "MIT research proj",
       "miner_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
       "subject_id": "subject_id_1",
       "paraphrase": "Where to update my profile picture",
-      "isApproved": "null/true/false"
+      "gem_payout": 20,
+      "isApproved": "null/true/false",
+      "approvalCount": 0
     }
   },
-  "Transaction_inspections": {
+  "inspections": {
     "transaction_inspector_id_1": {
       "inspector_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
+      "project_title": "MIT research proj",
       "subject_id": "subject_id_1",
       "transaction_paraphrase_id": "transaction_paraphrase_id_1",
+      "gem_payout": 20,
       "isValid": "null/true/false"
+    }
+  },
+  "rewards": {
+    "transaction_reward_id_1": {
+      "project_title": "MIT research proj",
+      "inspector_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
+      "miner_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
+      "subject_id": "subject_id_1",
+      "transaction_paraphrase_id": "transaction_paraphrase_id_1",
+      "gem_payout": 10
     }
   }
 }

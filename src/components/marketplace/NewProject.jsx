@@ -155,7 +155,7 @@ const NewProject = () => {
   return (
     <div>
       <button
-        className="btn"
+        className="btn bg-green-400 text-white hover:bg-creatorDark"
         onClick={() => document.getElementById("new_project_modal").showModal()}
       >
         Create Project

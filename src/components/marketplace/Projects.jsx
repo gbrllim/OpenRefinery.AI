@@ -1,10 +1,13 @@
 //-----------Libraries-----------//
 import { useContext, useEffect, useState } from "react";
-import { listDocs } from "@junobuild/core";
+import { listDocs, deleteDoc } from "@junobuild/core";
 import { NavLink } from "react-router-dom";
 
 //-----------Providers-----------//
 import { AuthContext } from "../../Auth";
+
+//-----------Utilities-----------//
+import { getLastUpdatedText } from "../../Utilities/formatting";
 
 const Projects = () => {
   const { user } = useContext(AuthContext);
@@ -27,88 +30,79 @@ const Projects = () => {
     getProjects();
   }, []);
 
-  // Check for user state
-  useEffect(() => {
-    if ([undefined, null].includes(user)) {
-      // setItems([]); // Sort items in a different way
-      return;
+  const deleteProj = async (item) => {
+    console.log("delete", item);
+    try {
+      // Delete item based on key
+      await deleteDoc({
+        collection: "projects",
+        doc: item,
+      });
+      // Refresh list
+      await getProjects();
+    } catch (err) {
+      console.error("Catch", err);
     }
+  };
 
-    (async () => await getProjects())();
-  }, [user]);
+  // Check for user state - currently unused
+  // useEffect(() => {
+  //   if ([undefined, null].includes(user)) {
+  //     // setItems([]); // Sort items in a different way
+  //     return;
+  //   }
+
+  //   (async () => await getProjects())();
+  // }, [user]);
 
   return (
-    <div className="mt-8 w-full max-w-2xl" role="table">
-      <div role="row">
-        <span role="columnheader" aria-sort="none">
-          Ongoing Projects
-        </span>
-      </div>
+    <div className="mt-8 w-full max-w-[95%]">
+      <h1 className="text-xl font-medium tracking-tight">Ongoing Projects</h1>
 
-      <div className="py-2" role="rowgroup">
-        {items.map((item, index) => {
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {items.map((item) => {
           const {
             key,
-            data: { title, sponsor_id, miner_payout },
+            data: { title, miner_payout, inspector_payout, creation_date },
           } = item;
 
           return (
-            <NavLink
-              to={"/project/" + key}
-              key={key}
-              className="mb-4 flex items-center gap-2 rounded-sm border-[3px] border-black bg-white px-3 shadow-[5px_5px_0px_rgba(0,0,0,1)]"
-              role="row"
-            >
-              <span
-                role="cell"
-                aria-rowindex={index}
-                className="align-center flex min-w-max p-1"
+            <div key={key} className="">
+              <NavLink
+                to={"/project/" + key}
+                className="flex min-h-[150px] flex-col items-center justify-center rounded-lg border-slate-600 bg-white px-3 shadow-lg"
               >
-                {index + 1}
-              </span>
-              <div role="cell" className="line-clamp-3 grow overflow-hidden">
-                {title}
-              </div>
-              <div role="cell" className="line-clamp-3 grow overflow-hidden">
-                {sponsor_id}
-              </div>
-              <div role="cell" className="line-clamp-3 grow overflow-hidden">
-                Payout: {miner_payout} 💎
-              </div>
-              {/* <div
-                role="cell"
-                className="flex gap-2 justify-center align-middle"
+                <div
+                  role="cell"
+                  className=" mt-3 line-clamp-3 w-full overflow-hidden text-left tracking-tight"
+                >
+                  <span className="font-medium">Project:</span> {title}
+                </div>
+                <p className="mb-auto w-full animate-pulse text-left text-xs tracking-tight">
+                  Posted: {getLastUpdatedText(creation_date)}
+                </p>
+                <p className="mb-2 min-w-56 rounded-md bg-creatorLight px-2 text-center text-sm">
+                  English
+                </p>
+                <figure className="flex flex-row gap-2">
+                  <div className="btn mb-3 w-28 bg-minerDark leading-4 text-white hover:bg-minerLight">
+                    Mine 💬
+                    <br />
+                    {miner_payout} 💎
+                  </div>
+                  <div className="btn mb-3 w-28 bg-inspectorDark leading-4 text-white hover:bg-inspectorLight">
+                    Inspect 🔍 <br />
+                    {inspector_payout} 💎
+                  </div>
+                </figure>
+              </NavLink>
+              <button
+                className="text-xs text-red-600"
+                onClick={async () => await deleteProj(item)}
               >
-                {url !== undefined ? (
-                  <a
-                    aria-label="Open data"
-                    rel="noopener noreferrer"
-                    href={url}
-                    target="_blank"
-                    className="hover:text-lavender-blue-500 active:text-lavender-blue-400"
-                  >
-                    <svg
-                      width="16"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 29 29"
-                      fill="currentColor"
-                    >
-                      <g>
-                        <rect
-                          fill="none"
-                          className="opacity-25"
-                          width="29"
-                          height="29"
-                        />
-                        <path d="M8.36,26.92c-2,0-3.88-.78-5.29-2.19C.15,21.81.15,17.06,3.06,14.14L12.57,4.64c.39-.39,1.02-.39,1.41,0s.39,1.02,0,1.41L4.48,15.56c-2.14,2.14-2.14,5.62,0,7.76,1.04,1.04,2.41,1.61,3.88,1.61s2.84-.57,3.88-1.61l12.79-12.79c1.47-1.47,1.47-3.87,0-5.34-1.47-1.47-3.87-1.47-5.34,0l-12.45,12.45c-.73.73-.73,1.91,0,2.64.73.73,1.91.73,2.64,0l9.17-9.17c.39-.39,1.02-.39,1.41,0s.39,1.02,0,1.41l-9.17,9.17c-1.51,1.51-3.96,1.51-5.47,0-1.51-1.51-1.51-3.96,0-5.47L18.26,3.77c2.25-2.25,5.92-2.25,8.17,0s2.25,5.92,0,8.17l-12.79,12.79c-1.41,1.41-3.29,2.19-5.29,2.19Z" />
-                      </g>
-                    </svg>
-                  </a>
-                ) : undefined}
-
-                <Delete item={item} reload={list} />
-              </div> */}
-            </NavLink>
+                Delete
+              </button>
+            </div>
           );
         })}
       </div>
