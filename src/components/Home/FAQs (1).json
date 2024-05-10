@@ -1,0 +1,59 @@
+{
+"questions": [
+{
+"user": "ALL USERS",
+"question": "What is OpenRefinery.AI this application about?",
+"answer": "Today's AI chatbots struggle with subtle language differences. OpenRefinery.AI collects contributions from individuals to train the AI to learn different languages and cultures. Identical to how miners excavate and refine raw minerals into dazzling gemstones, OpenRefinery.AI aims to generate top-notch data that you can use to train your AI-powered chatbots."
+},
+{
+"user": "ALL USERS",
+"question": "How do I come onboard this application?",
+"answer": "You may sign in using your internet identity. To get started, you are only required to create a username and upload a profile picture."
+},
+{
+"user": "ALL USERS",
+"question": "How do I get paid?",
+"answer": "Miners and Validators will be paid upon the completion of a project (when Creators close the project). The GEMs accumulated can be exchanged for money, which will be directly transferred to their virtual wallets (linked during sign up)."
+},
+{
+"user": "MINER",
+"question": "[Miner] Is there a limit to how many entries I can submit per day?",
+"answer": "There are no restrictions to the number of projects that Miners can join. However, to maintain the quality and standards of utterances submitted, a limitation of 50 submissions per day will be imposed by the system."
+},
+{
+"user": "MINER",
+"question": "[Miner] What if somebody else has already submitted an identical utterance?",
+"answer": "You will receive a system notification if your utterance has already been submitted before. Rewards are only granted for new, unique submissions."
+},
+{
+"user": "MINER",
+"question": "[Miner] Are there different amounts of rewards for different language translations?",
+"answer": "Reward amounts differ from project to project. Kindly refer to the project details for more information."
+},
+{
+"user": "INSPECTOR",
+"question": "[Inspector] Who is an Inspector? What is the criteria to becoming one?",
+"answer": "Inspectors will evaluate the utterances submitted by their peer Miners and either approve or disapprove the submissions based on their relevance to the subject. To qualify as an Inspector, Miners must complete minimum xx jobs and obtain a validation score of at least X%."
+},
+{
+"user": "INSPECTOR",
+"question": "[Inspector] What is the penalty system?",
+"answer": "When validating an utterance, Inspectors who fall within the <= 20% of unpopular votes, will be penalised for having made an incorrect decision. They will not be paid for that job, and to further discourage such mistakes, will be banned by the system from working any jobs for a week."
+},
+{
+"user": "CREATOR",
+"question": "[Creator] How does the validation system work? How can I be assured of the relevancy and appropriateness of the utterances?",
+"answer": "The system uses consensus mechanism to validate utterances. Creators can choose how many validations will be reviewing each submitted utterance. Minimally 80% of Inspectors must opt for the same, unanimous decision - this determines whether an utterance is approved or disapproved."
+},
+{
+"user": "CREATOR",
+"question": "[Creator] What are the advantages of opting for this system?",
+"answer": "Transactions are transparent when done via OpenRefinery.ai system. Creators can tell exactly how many people have contributed to each set of utterances. In the future, Creators will also be able to choose the demographic of users they collect data from, based age, gender and more."
+},
+{
+"user": "CREATOR",
+"question": "[Creator] How much does it cost to use this service?",
+"answer": "Creators have complete control over the settings for each project and the payouts for each task. Here’s a typical example of a project created: 50 subjects requiring 100 utterances each in German. (one language only) Payout for each successfully submitted and approved utterance - 10 GEMs 50 validations required per utterance. Payout for each successful validation: 1 GEM 10,000 jobs created in all which costs 55,000 GEMs. Conversion rate: 1 GEM = 0.05 SGD Total cost of project: $2,750"
+}
+]
+}
