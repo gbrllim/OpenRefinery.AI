@@ -10,7 +10,7 @@ import APNG from "../Media/apngcrop.png";
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex w-full flex-col items-center">
       <NavBar />
       <div className="flex flex-col justify-center items-center">
       </div>
@@ -88,8 +88,8 @@ const HomePage = () => {
           <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
             FAQ
           </h1>
-          <p className="tracking-tight mb-2">Frequently asked qns</p>
-          <figure className="overflow-y-scroll max-h-[500px] mb-4 w-3/4">
+          <p className="mb-2 tracking-tight">Frequently asked qns</p>
+          <figure className="mb-4 max-h-[500px] w-3/4 overflow-y-scroll">
             <FaqPage />
           </figure>
         </section>

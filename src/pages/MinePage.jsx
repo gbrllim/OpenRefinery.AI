@@ -11,6 +11,7 @@ import InputSubjects from "../Details/InputSubjects";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
+import FeedbackButton from "../Components/FeedbackButton";
 
 const MinePage = () => {
   const { user } = useContext(AuthContext);
@@ -31,11 +32,14 @@ const MinePage = () => {
 
   // Miner transaction format
   const [transaction, setTransaction] = useState({
+    project_title: "",
     miner_id: "", // UserId
     subject_id: location.state,
     paraphrase: "",
+    gem_payout: 0,
     isApproved: null,
     approvalCount: 0,
+    rejectionCount: 0,
   });
 
   // Get subject data - for title
@@ -60,6 +64,7 @@ const MinePage = () => {
   useEffect(() => {
     getSubject();
     getParaphrase();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Method - Add paraphases to subject and refresh list
@@ -70,7 +75,6 @@ const MinePage = () => {
       const updatedData = {
         ...transaction,
         miner_id: user.key,
-        approvalCount: paraphraseCount,
       };
 
       await setDoc({
@@ -238,6 +242,7 @@ const MinePage = () => {
               </table>
             </div>
           </side>
+          <FeedbackButton id={location.state} />
         </body>
       </div>
     </motion.div>

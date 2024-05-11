@@ -4,19 +4,17 @@ import { signOut } from "@junobuild/core";
 import { AuthContext } from "../Auth";
 import { useContext } from "react";
 import { Login } from "../Login";
-import { Logout } from "../Logout";
 import { Button } from "../Details/Button";
 
 const NavBar = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    
-    <nav className="m-4 fixed top-0 flex flex-row gap-2 justify-between items-center min-w-[80vw]">
-      <section className="flex-row flex items-center gap-3">
+    <nav className="fixed top-0 flex min-w-[100vw] flex-row items-center justify-between gap-2 bg-white px-8 py-4 opacity-95">
+      <section className="flex flex-row items-center gap-3">
         <NavLink
           to="/"
-          className="text-3xl font-bold px-1 hover:translate-y-[-1px] hover:animate-pulse"
+          className="px-1 text-3xl font-bold hover:translate-y-[-1px] hover:animate-pulse"
         >
           OPENREFINERY.AI{" "}
         </NavLink>
@@ -30,10 +28,10 @@ const NavBar = () => {
       </section>
       {user !== undefined && user !== null ? (
         <details className="dropdown dropdown-end ">
-          <summary className="m-1 btn px-12 font-medium">
+          <summary className="btn m-1 px-12 font-medium">
             Wallet: {user && user.key.slice(-8)}
           </summary>
-          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+          <ul className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
             <li>
               <a>Settings</a>
             </li>

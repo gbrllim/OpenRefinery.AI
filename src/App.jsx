@@ -7,7 +7,6 @@ import Routes from "./providers/routerProvider.jsx";
 import { Auth } from "./Auth.jsx";
 
 const App = () => {
-  // TODO: STEP_1_INITIALIZATION
   useEffect(() => {
     (async () =>
       await initJuno({

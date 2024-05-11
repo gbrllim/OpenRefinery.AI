@@ -19,10 +19,8 @@ const NewProject = () => {
   const [formInfo, setFormInfo] = useState({
     title: "",
     creator_id: "",
-    miners_id: [], // user_id
-    inspectors_id: [],
     subjects: [],
-    languages: [],
+    language: "",
     miner_payout: 0,
     inspector_payout: 0,
     paraphrases_needed: 0,
@@ -33,7 +31,6 @@ const NewProject = () => {
   const [subject, setSubject] = useState({
     id: "",
     title: "",
-    paraphrases: [],
     isMined: false,
     isValidated: false,
     completion_date: "",
@@ -96,12 +93,12 @@ const NewProject = () => {
     });
   };
 
-  // const selectChange = (e) => {
-  //   const value = e.target.value;
-  //   setFormInfo((prevState) => {
-  //     return { ...prevState, statusId: value };
-  //   });
-  // };
+  const selectChange = (e) => {
+    const value = e.target.value;
+    setFormInfo((prevState) => {
+      return { ...prevState, language: value };
+    });
+  };
 
   // Data validation
   // const isFilled = () => {
@@ -155,7 +152,7 @@ const NewProject = () => {
   return (
     <div>
       <button
-        className="btn"
+        className="btn bg-green-400 text-white hover:bg-creatorDark"
         onClick={() => document.getElementById("new_project_modal").showModal()}
       >
         Create Project
@@ -223,35 +220,35 @@ const NewProject = () => {
               value={formInfo.validations_needed}
             />
 
-            <p>Languages: *</p>
+            <p>Language: *</p>
 
-            <InputText
-              id="languages"
+            {/* <InputText
+              id="language"
               placeholder="english"
               handleChange={textChange}
-              value={formInfo.languages}
-            />
+              value={formInfo.language}
+            /> */}
 
-            {/* <select
-              className="h-12 w-full rounded-lg border-[1px] border-text bg-transparent p-2 text-text hover:translate-y-[-2px] hover:border-[2px]"
+            <select
+              className="border-text text-text h-12 w-full rounded-lg border-[1px] bg-transparent p-2 hover:translate-y-[-2px] hover:border-[2px]"
               onChange={(e) => selectChange(e)}
-              id="statusId"
-              defaultValue="0" // Set the defaultValue to an empty string
+              id="language"
+              defaultValue="" // Set the defaultValue to an empty string
             >
               <option value="0" disabled>
                 Choose One
               </option>
-              <option value="1">Wishlist</option>
-              <option value="2">Applied</option>
-              <option value="3">Screening</option>
-              <option value="4">Interview</option>
-              <option value="5">Offer</option>
-            </select> */}
+              <option value="English">English</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Spanish">Spanish</option>
+              <option value="German">German</option>
+              <option value="Japanese">Japanese</option>
+            </select>
 
             <p className="">Subjects:</p>
             <InputSubjects
               id="title"
-              placeholder="e.g. Singapore"
+              // placeholder=""
               handleChange={subjectTextChange}
               value={subject.title}
               onClick={addSubject}

@@ -6,8 +6,7 @@ import { getDoc, listDocs, setDoc } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 //-----------Components-----------//
-import { MineProgressBar } from "../Details/ProgressBar";
-import InputSubjects from "../Details/InputSubjects";
+import FeedbackButton from "../Components/FeedbackButton";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
@@ -17,26 +16,41 @@ const InspectPage = () => {
 
   // Project Data
   const { id } = useParams(); // Project ID
-  const [paraphraseCount, setParaphraseCount] = useState(0); // Parapharse_needed for proj
   const [projectTitle, setProjectTitle] = useState("");
+  const [validationsNeeded, setValidationsNeeded] = useState(0);
+  const approvalRate = 0.1;
 
   // Subject data
   const [subject, setSubject] = useState([]);
   const [paraphrases, setParaphrases] = useState([]);
   const location = useLocation(); // Subject ID
 
-  // Other variables
-  const [message, setMessage] = useState("temp response message");
-  const [progress, setProgress] = useState(0);
+  // Paraphrase data
+  const [currentCount, setCurrentCount] = useState(0);
+  let [index, setIndex] = useState(0);
 
-  // Miner transaction format
+  // Other variables
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Inspector transaction format
   const [transaction, setTransaction] = useState({
-    miner_id: "", // UserId
+    inspector_id: "", // UserId
+    project_title: "",
     subject_id: location.state,
-    paraphrase: "",
-    isApproved: null,
-    approvalCount: 0,
+    paraphrase_id: "", // paraphrase being reviewed
+    gem_payout: 0,
+    isValid: null,
   });
+
+  // Rewards transaction format
+  // const [reward, setReward] = useState({
+  //   project_title: "",
+  //   subject_id: location.state,
+  //   miner_id: "",
+  //   inspector_id: "",
+  //   paraphrase_id: "", // paraphrase being reviewed
+  //   gem_payout: 0,
+  // });
 
   // Get subject data - for title
   const getSubject = async () => {
@@ -45,56 +59,16 @@ const InspectPage = () => {
       key: id,
     });
 
-    setParaphraseCount(item.data.paraphrases_needed);
     setProjectTitle(item.data.title);
+    setValidationsNeeded(item.data.validations_needed);
 
     const filteredData = item.data.subjects.find(
       (subject) => subject.id === location.state,
     );
 
-    console.log("subject data", filteredData);
+    console.log("getSubject", filteredData);
 
     setSubject(filteredData);
-  };
-
-  useEffect(() => {
-    getSubject();
-    getParaphrase();
-  }, []);
-
-  // Method - Add paraphases to subject and refresh list
-  const updateParaphrase = async () => {
-    try {
-      const para_id = nanoid();
-
-      const updatedData = {
-        ...transaction,
-        miner_id: user.key,
-        approvalCount: paraphraseCount,
-      };
-
-      await setDoc({
-        collection: "paraphrases",
-        doc: {
-          key: para_id,
-          data: updatedData,
-        },
-      });
-
-      console.log("Paraphrase updated successfully", updatedData);
-
-      // Reset form to blank
-      setTransaction({
-        miner_id: "",
-        subject_id: location.state,
-        paraphrase: "",
-        isApproved: null,
-      });
-
-      getParaphrase();
-    } catch (error) {
-      console.error("Error updating paraphrases:", error);
-    }
   };
 
   // get parahrase and check progress
@@ -103,47 +77,123 @@ const InspectPage = () => {
       const data = await listDocs({
         collection: "paraphrases",
       });
-
+      // Find paraphrases with the subject
       const filteredData = data.items.filter(
         (item) => item.data.subject_id === location.state,
       );
 
-      console.log("filter paraphrases", filteredData);
+      let results = [];
 
-      const taskProgress = filteredData.length / paraphraseCount;
-      console.log(taskProgress);
+      filteredData.forEach((item) => {
+        results.push([
+          item.data.paraphrase,
+          item.key,
+          item.data.approvalCount + item.data.rejectionCount,
+        ]);
+      });
+      setCurrentCount(results[index][2]);
+      setParaphrases(results);
 
-      if (taskProgress !== Infinity) setProgress(taskProgress);
-
-      setParaphrases(filteredData);
+      console.log("getParaphrases", results);
     } catch (error) {
       console.error("Error retrieving paraphrases:", error);
     }
   };
 
-  // Table status for approval
-  const getApprovalStatus = (isApproved) => {
-    if (isApproved === null) {
-      return "Pending";
-    } else if (isApproved === true) {
-      return "Approved ✅";
-    } else {
-      return "Rejected ❌";
+  // Initial page call
+  useEffect(() => {
+    getSubject();
+    getParaphrase();
+  }, []);
+
+  // Method - Add paraphases to subject and refresh list
+
+  const updateInspection = async (booleanInput) => {
+    try {
+      const key = nanoid();
+
+      const updatedData = {
+        ...transaction,
+        inspector_id: user.key,
+        isValid: booleanInput,
+        paraphrase_id: paraphrases[index][1],
+      };
+
+      // Step 1: Inspections - Add transaction validation
+      await setDoc({
+        collection: "inspections",
+        doc: {
+          key,
+          data: updatedData,
+        },
+      });
+
+      console.log(`${booleanInput ? "Approved" : "Rejected"}`, updatedData);
+
+      // Step 2: Paraphrase - Update approval count and check for isApproved
+      updateParaphraseVotes(booleanInput);
+
+      // Reset tx input to blank
+      setTransaction({
+        paraphrase_id: "",
+        isValid: null,
+      });
+
+      // Shift to next para
+      setIsSubmitted(true);
+
+      // Step 3: Rewards - Create transaction reward (KIV)
+    } catch (error) {
+      console.error("Error updating insepection:", error);
     }
   };
 
-  // Helper function text change for transaction
-  const textChange = (e) => {
-    const name = e.target.id;
-    let value = e.target.value;
-    // value = value.replace("$", "");
-    setTransaction((prevState) => {
-      return { ...prevState, [name]: value };
-    });
+  const updateParaphraseVotes = async (booleanInput) => {
+    try {
+      const data = await getDoc({
+        collection: "paraphrases",
+        key: paraphrases[index][1],
+      });
+      console.log("updateParaphraseVotes", data);
+
+      let approval, rejection;
+      let validate = null;
+      // Update vote based on boolean input & check for approvalRate reached
+      if (booleanInput) {
+        approval = data.data.approvalCount + 1;
+        rejection = data.data.rejectionCount;
+        if (approval >= validationsNeeded * approvalRate) validate = true;
+      } else {
+        approval = data.data.approvalCount;
+        rejection = data.data.rejectionCount + 1;
+        if (rejection >= validationsNeeded * approvalRate) validate = false;
+      }
+
+      setCurrentCount(approval + rejection);
+
+      const updatedData = {
+        ...data.data,
+        isApproved: validate,
+        approvalCount: approval,
+        rejectionCount: rejection,
+      };
+
+      await setDoc({
+        collection: "paraphrases",
+        doc: {
+          ...data,
+          data: updatedData,
+        },
+      });
+    } catch (error) {
+      console.log("Error updating votes", error);
+    }
   };
 
-  const isFilled = () => {
-    return transaction.paraphrase.trim() !== "";
+  const advanceIndex = () => {
+    setIndex(index + 1);
+    setCurrentCount(paraphrases[index][1]);
+    setIsSubmitted(false);
   };
 
   return (
@@ -176,7 +226,7 @@ const InspectPage = () => {
           <p className="translate-x-[-6px]">Project</p>
         </NavLink>
         <body className="m-28 flex w-full flex-row">
-          <section className="ml-20 mr-8 flex w-2/3 flex-col items-center chat-end">
+          <section className="chat-end ml-20 mr-8 flex w-2/3 flex-col items-center">
             <h1 className="w-full text-left text-xl tracking-tight">
               {projectTitle}
             </h1>
@@ -184,28 +234,55 @@ const InspectPage = () => {
               Task: Rephrase these requests for an FAQ page
             </p>
             <label className="mt-6 w-full text-left">Original Subject:</label>
-            <figure className=" w-full rounded-md bg-inspectorLight px-4 py-2 chat-bubble text-black">
-              <p className="text-3xl italic tracking-tight">{subject.title}</p> 
+            <figure className=" chat-bubble w-full rounded-md bg-inspectorLight px-4 py-2 text-black">
+              <p className="text-3xl italic tracking-tight">{subject.title}</p>
             </figure>
-            <label className="mt-6 w-full text-left">Paraphrase:</label>
-            <figure className=" w-full rounded-md bg-inspectorDark px-4 py-2 chat-bubble">
+            <label className="mt-4 w-full text-left">Paraphrase:</label>
+            <figure className=" chat-bubble w-full rounded-md bg-inspectorDark px-4 py-2">
               <p className=" animate-pulse text-3xl italic tracking-tight">
-                {subject.title}
+                {paraphrases.length > 0 ? paraphrases[index][0] : "Loading..."}
               </p>
             </figure>
-            <figure className="mt-6 flex flex-row justify-center gap-4">
-              <button className="btn w-36 bg-inspectorDark text-white hover:translate-y-[-2px] hover:bg-inspectorLight">
-                Approve ✅
+            {isSubmitted ? (
+              <button
+                value={true}
+                onClick={advanceIndex}
+                className="btn mt-4 w-36 bg-inspectorDark text-white hover:translate-y-[-2px] hover:bg-inspectorLight"
+              >
+                Next ➡️
               </button>
-              <button className="btn w-36 bg-inspectorDark text-white hover:translate-y-[-2px] hover:bg-inspectorLight ">
-                Reject ❌
-              </button>
-            </figure>
-            <p className="mt-1 text-[10px] text-slate-600">
-              Subject ID:{subject.id}
-            </p>
+            ) : (
+              <figure className="mt-4 flex flex-row justify-center gap-4">
+                <button
+                  value={true}
+                  onClick={() => updateInspection(true)}
+                  className="btn w-36 bg-inspectorDark text-white hover:translate-y-[-2px] hover:bg-inspectorLight"
+                >
+                  Approve ✅
+                </button>
+                <button
+                  value={false}
+                  onClick={() => updateInspection(false)}
+                  className="btn w-36 bg-inspectorDark text-white hover:translate-y-[-2px] hover:bg-inspectorLight "
+                >
+                  Reject ❌
+                </button>
+              </figure>
+            )}
 
-            <p className="mt-2 text-sm">{message}</p>
+            <div className="mt-4 flex flex-col items-center justify-center rounded-lg border-2 px-8 py-3 shadow-lg">
+              <figure className=" rounded-lg bg-inspectorLight px-4 py-1 font-bold text-white ">
+                <p className="animate-pulse text-sm">
+                  Inspection Progress:{" "}
+                  {currentCount
+                    ? `${(currentCount / validationsNeeded) * 100}%`
+                    : `0%`}
+                </p>
+              </figure>
+              <p className="mt-1 text-[10px] text-slate-600">
+                Subject ID:{subject.id}
+              </p>
+            </div>
           </section>
           <side className="mr-20 flex w-1/3 flex-col items-center ">
             <h1 className="mb-2 text-xl font-medium">
@@ -227,6 +304,7 @@ const InspectPage = () => {
             </figure>
           </side>
         </body>
+        <FeedbackButton id={location.state} />
       </div>
     </motion.div>
   );
