@@ -75,7 +75,6 @@ const MinePage = () => {
       const updatedData = {
         ...transaction,
         miner_id: user.key,
-        approvalCount: paraphraseCount,
       };
 
       await setDoc({
