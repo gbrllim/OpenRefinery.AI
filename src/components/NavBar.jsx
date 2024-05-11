@@ -11,6 +11,7 @@ const NavBar = () => {
   const { user } = useContext(AuthContext);
 
   return (
+    
     <nav className="m-4 fixed top-0 flex flex-row gap-2 justify-between items-center min-w-[80vw]">
       <section className="flex-row flex items-center gap-3">
         <NavLink
