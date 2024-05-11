@@ -1,6 +1,3 @@
-import { Background } from "../Background";
-import { Table } from "../Table";
-import { Modal } from "../Modal";
 import { Footer } from "../Footer";
 //-----------Components-----------//
 import NavBar from "../Components/NavBar";

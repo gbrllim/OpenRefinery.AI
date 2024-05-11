@@ -1,5 +1,4 @@
 //-----------Libraries-----------//
-import { Outlet } from "react-router-dom";
 
 //-----------Components-----------//
 
@@ -18,7 +17,6 @@ const MarketplacePage = () => {
         <NewProject />
       </section>
       <Projects />
-      {/* <Outlet /> */}
     </div>
   );
 };

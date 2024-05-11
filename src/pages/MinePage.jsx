@@ -63,6 +63,7 @@ const MinePage = () => {
   useEffect(() => {
     getSubject();
     getParaphrase();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Method - Add paraphases to subject and refresh list

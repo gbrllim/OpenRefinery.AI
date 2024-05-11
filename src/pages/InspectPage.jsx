@@ -6,12 +6,10 @@ import { getDoc, listDocs, setDoc } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 //-----------Components-----------//
-import { MineProgressBar } from "../Details/ProgressBar";
-import InputSubjects from "../Details/InputSubjects";
+import FeedbackButton from "../Components/FeedbackButton";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
-import FeedbackButton from "../Components/FeedbackButton";
 
 const InspectPage = () => {
   const { user } = useContext(AuthContext);
@@ -40,14 +38,14 @@ const InspectPage = () => {
   });
 
   // Rewards transaction format
-  const [reward, setReward] = useState({
-    project_title: "",
-    subject_id: location.state,
-    miner_id: "",
-    inspector_id: "",
-    paraphrase_id: "", // paraphrase being reviewed
-    gem_payout: 0,
-  });
+  // const [reward, setReward] = useState({
+  //   project_title: "",
+  //   subject_id: location.state,
+  //   miner_id: "",
+  //   inspector_id: "",
+  //   paraphrase_id: "", // paraphrase being reviewed
+  //   gem_payout: 0,
+  // });
 
   // Get subject data - for title
   const getSubject = async () => {

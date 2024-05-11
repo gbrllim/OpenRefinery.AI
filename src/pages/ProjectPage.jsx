@@ -1,11 +1,9 @@
 //-----------Libraries-----------//
 import { useContext, useState, useEffect } from "react";
 import { useParams, NavLink, Outlet } from "react-router-dom";
-import { motion } from "framer-motion";
-import { listDocs, getDoc } from "@junobuild/core";
+import { getDoc } from "@junobuild/core";
 
 //-----------Components-----------//
-import { Button } from "../Details/Button";
 import NavBar from "../Components/NavBar";
 
 //-----------Providers-----------//
