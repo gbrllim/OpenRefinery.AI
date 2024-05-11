@@ -11,6 +11,7 @@ import InputSubjects from "../Details/InputSubjects";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
+import FeedbackButton from "../Components/FeedbackButton";
 
 const MinePage = () => {
   const { user } = useContext(AuthContext);
@@ -240,6 +241,7 @@ const MinePage = () => {
               </table>
             </div>
           </side>
+          <FeedbackButton id={location.state} />
         </body>
       </div>
     </motion.div>

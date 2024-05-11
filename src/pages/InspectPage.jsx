@@ -11,6 +11,7 @@ import InputSubjects from "../Details/InputSubjects";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
+import FeedbackButton from "../Components/FeedbackButton";
 
 const InspectPage = () => {
   const { user } = useContext(AuthContext);
@@ -227,6 +228,7 @@ const InspectPage = () => {
             </figure>
           </side>
         </body>
+        <FeedbackButton id={location.state} />
       </div>
     </motion.div>
   );

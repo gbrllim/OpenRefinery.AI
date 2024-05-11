@@ -37,7 +37,7 @@ const ProjectPage = () => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center">
       <NavBar />
-      <head className="m-3 mt-24 flex w-11/12 flex-col">
+      <header className="m-3 mt-24 flex w-11/12 flex-col">
         <h1 className="mb-2 text-3xl">Project: {item.title}</h1>
         {/* Project details */}
         <article className="mb-2 flex flex-row gap-2">
@@ -72,7 +72,7 @@ const ProjectPage = () => {
         <p className="mt-2 text-lg font-bold">
           Task: Rephrase these requests for an FAQ page
         </p>
-      </head>
+      </header>
       <body className="w-11/12 overflow-y-scroll">
         {item.subjects &&
           item.subjects.map((subject, index) => {
