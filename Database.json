@@ -6,8 +6,10 @@
       "profile_pic": "https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe-1f680.png",
       "created_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
       "joined_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
-      "job_count": 201,
-      "total_earnings": 19.95
+      "isValidator": true,
+      "job_count": 2010,
+      "total_gems": 420420,
+      "current_gems": 1337
     },
     "8c9ecc3fd945ffde07cdde70aa3260aa30e16c485fa40174582d535fe62a18d6": {
       "email": "dongdong@yahoo.com",
@@ -32,7 +34,8 @@
       "paraphrases_needed": 100,
       "validations_needed": 20,
       "time_required_min": 5,
-      "creation_date": "23/5/22"
+      "creation_date": "23/5/22",
+      "isComplete": false
     },
     "<ProjectID2>": {
       "title": "Healthcare chatbot",
@@ -72,7 +75,7 @@
       "inspector_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
       "project_title": "MIT research proj",
       "subject_id": "subject_id_1",
-      "transaction_paraphrase_id": "transaction_paraphrase_id_1",
+      "paraphrase_id": "transaction_paraphrase_id_1",
       "gem_payout": 20,
       "isValid": "null/true/false"
     }
@@ -83,7 +86,7 @@
       "inspector_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
       "miner_id": "w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe",
       "subject_id": "subject_id_1",
-      "transaction_paraphrase_id": "transaction_paraphrase_id_1",
+      "paraphrase_id": "transaction_paraphrase_id_1",
       "gem_payout": 10
     }
   }

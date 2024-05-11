@@ -22,7 +22,7 @@ const NewProject = () => {
     miners_id: [], // user_id
     inspectors_id: [],
     subjects: [],
-    languages: [],
+    language: "",
     miner_payout: 0,
     inspector_payout: 0,
     paraphrases_needed: 0,
@@ -33,7 +33,6 @@ const NewProject = () => {
   const [subject, setSubject] = useState({
     id: "",
     title: "",
-    paraphrases: [],
     isMined: false,
     isValidated: false,
     completion_date: "",
@@ -226,10 +225,10 @@ const NewProject = () => {
             <p>Languages: *</p>
 
             <InputText
-              id="languages"
+              id="language"
               placeholder="english"
               handleChange={textChange}
-              value={formInfo.languages}
+              value={formInfo.language}
             />
 
             {/* <select
