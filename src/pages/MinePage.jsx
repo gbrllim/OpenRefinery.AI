@@ -39,6 +39,7 @@ const MinePage = () => {
     gem_payout: 0,
     isApproved: null,
     approvalCount: 0,
+    rejectionCount: 0,
   });
 
   // Get subject data - for title

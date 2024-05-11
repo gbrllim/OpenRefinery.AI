@@ -10,15 +10,6 @@
       "job_count": 2010,
       "total_gems": 420420,
       "current_gems": 1337
-    },
-    "8c9ecc3fd945ffde07cdde70aa3260aa30e16c485fa40174582d535fe62a18d6": {
-      "email": "dongdong@yahoo.com",
-      "username": "ktomygd",
-      "profile_pic": "https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe-1f680.png",
-      "created_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
-      "joined_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
-      "job_count": 1337,
-      "total_earnings": 420.42
     }
   },
   "projects": {
@@ -67,7 +58,8 @@
       "paraphrase": "Where to update my profile picture",
       "gem_payout": 20,
       "isApproved": "null/true/false",
-      "approvalCount": 0
+      "approvalCount": 0,
+      "rejectionCount": 0
     }
   },
   "inspections": {
