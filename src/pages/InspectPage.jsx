@@ -208,7 +208,7 @@ const InspectPage = () => {
       <div className="absolute left-1/2 top-1/2 z-30 flex h-full w-full -translate-x-1/2 -translate-y-[50%] transform flex-col items-center rounded-lg bg-white shadow-lg">
         <NavLink
           to={`/project/${id}`}
-          className="btn btn-ghost btn-sm absolute left-2 top-3 flex bg-blue-100 shadow-lg hover:bg-minerLight "
+          className="btn btn-ghost btn-sm absolute left-2 top-3 flex bg-blue-100 shadow-lg hover:bg-inspectorLight "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -10,7 +10,7 @@ const InputSubjects = ({
   return (
     <div className="flex flex-row">
       <input
-        className=" text-text h-12 w-full rounded-lg border-[1px] bg-transparent p-2 hover:translate-y-[-2px] hover:border-[2px]"
+        className="text-text mr-2 h-12 w-full rounded-lg border-[1px] bg-transparent p-2 hover:border-[2px]"
         id={id}
         type="text"
         placeholder={placeholder}
