@@ -2,7 +2,7 @@
 
 Live deployment link: [https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/)
 
-![openrefinery logo](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/photo_2024-05-13_22-28-09.jpg)
+![openrefinery logo](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/logoLong.png)
 
 ## Background
 
