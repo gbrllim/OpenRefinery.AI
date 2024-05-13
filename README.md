@@ -25,6 +25,27 @@ OpenRefinery.AI is a revolutionary crowdsourcing platform that redefines the AI 
 - ICP can handle alot of data (------------GAB TO EDIT------------)
 - gas prices paid by us not customers (This would not work on ETH 50USD per vote?!?) (------------GAB TO EDIT------------)
 
+###User Types
+### Creator
+- **Definition**: An individual or institution that requires paraphrased data to improve AI responses
+- **Responsibility**: Lists projects with subjects for Miners and Inspectors to work on
+
+#### Miner
+- **Definition**: A user who creates new paraphrases for the subjects listed
+- **Responsibility**: Generates original paraphrases that have not been submitted previously. Compensation is provided only after successful validation by an Inspector
+
+#### Inspector
+- **Definition**: A user who validates the paraphrases created by Miners
+- **Responsibility**: Ensures the quality and originality of the paraphrases to maintain the integrity of the data set
+
+
+### Key Terms
+
+- **Project**: A set of requirements and subjects established by a Creator that requires crowdsourced effort to generate relevant paraphrases.
+- **Subject**: A topic sentence that requires additional data (e.g., "I need to reset my password", "I want to change my profile picture").
+- **Paraphrase**: A sentence similar to the subject but rephrased (e.g., "How can I update my password?", "How do I change my display photo?").
+
+
 ## Core Features
 - **Project Management:**
   - Flexible Project Creation: Allow for a variety of tasks, project creators can indicate their preferred payout, paraphrases needed, inspection count and language needed for more complex projects
