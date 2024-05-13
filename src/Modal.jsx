@@ -3,7 +3,6 @@ import { setDoc, uploadFile } from "@junobuild/core";
 import { AuthContext } from "./Auth";
 import { nanoid } from "nanoid";
 import { Button } from "./Details/Button";
-import { Backdrop } from "./Backdrop";
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);

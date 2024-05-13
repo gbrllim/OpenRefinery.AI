@@ -1,7 +1,6 @@
 import { deleteDoc, deleteAsset } from "@junobuild/core";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Backdrop } from "./Backdrop";
 
 export const Delete = ({ item, reload }) => {
   const [inProgress, setInProgress] = useState(false);
