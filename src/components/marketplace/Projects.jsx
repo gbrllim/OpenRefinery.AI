@@ -26,7 +26,6 @@ const Projects = () => {
   };
 
   useEffect(() => {
-    console.log("helloo");
     getProjects();
   }, []);
 
@@ -45,16 +44,6 @@ const Projects = () => {
     }
   };
 
-  // Check for user state - currently unused
-  // useEffect(() => {
-  //   if ([undefined, null].includes(user)) {
-  //     // setItems([]); // Sort items in a different way
-  //     return;
-  //   }
-
-  //   (async () => await getProjects())();
-  // }, [user]);
-
   return (
     <div className="mt-8 w-full max-w-[95%]">
       <h1 className="text-xl font-medium tracking-tight">Ongoing Projects</h1>
@@ -70,7 +59,7 @@ const Projects = () => {
             <div key={key} className="">
               <NavLink
                 to={"/project/" + key}
-                className="flex min-h-[150px] flex-col items-center justify-center rounded-lg border-slate-600 bg-white px-3 shadow-lg"
+                className="flex min-h-[150px] flex-col items-center justify-center rounded-lg border-slate-600 bg-white px-3 shadow-lg hover:translate-y-[-2px]"
               >
                 <div
                   role="cell"
@@ -85,12 +74,12 @@ const Projects = () => {
                   English
                 </p>
                 <figure className="flex flex-row gap-2">
-                  <div className="btn mb-3 w-28 bg-minerDark leading-4 text-white hover:bg-minerLight">
+                  <div className="btn mb-3 w-28 bg-minerDark leading-4 text-white hover:bg-minerDark">
                     Mine 💬
                     <br />
                     {miner_payout} 💎
                   </div>
-                  <div className="btn mb-3 w-28 bg-inspectorDark leading-4 text-white hover:bg-inspectorLight">
+                  <div className="btn mb-3 w-28 bg-inspectorDark leading-4 text-white hover:bg-inspectorDark">
                     Inspect 🔍 <br />
                     {inspector_payout} 💎
                   </div>

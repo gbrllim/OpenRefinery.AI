@@ -29,19 +29,3 @@ export default function FaqPage() {
     </div>
   );
 }
-{
-  /* {faqs.map((faq) => {
-        return (
-          <div
-            className="collapse collapse-arrow mb-2 bg-base-200"
-            key={faq.question}
-          >
-            <input type="radio" name="my-accordion-2" defaultChecked />
-            <div className="text-md collapse-title font-medium">
-              {faq.question}
-            </div>
-            <div className="collapse-content text-sm">{faq.answer}</div>
-          </div>
-        );
-      })} */
-}

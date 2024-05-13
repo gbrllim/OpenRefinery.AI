@@ -228,7 +228,7 @@ const MinePage = () => {
             <p className="">Enter your response:</p>
             <InputSubjects
               id="paraphrase"
-              placeholder="Enter your parapharse"
+              placeholder="Enter text"
               handleChange={textChange}
               value={transaction.paraphrase}
               onClick={updateParaphrase}

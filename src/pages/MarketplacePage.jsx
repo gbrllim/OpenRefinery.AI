@@ -8,14 +8,14 @@ import Projects from "../Components/marketplace/Projects";
 
 const MarketplacePage = () => {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center">
+    <div className="flex min-h-screen w-full flex-col items-center">
       <NavBar />
       <header className="mt-24 text-start">
         <h1 className="text-4xl font-bold">Marketplace</h1>
       </header>
-      <section className="py-4">
+      {/* <section className="py-4">
         <NewProject />
-      </section>
+      </section> */}
       <Projects />
     </div>
   );

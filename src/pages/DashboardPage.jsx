@@ -3,50 +3,72 @@
 //-----------Components-----------//
 import NavBar from "../Components/NavBar";
 import Chart from "../Components/Dashboard/Chart";
+import Wallet from "../Components/Dashboard/Wallet";
+import ToolBar from "../Components/Dashboard/Toolbar";
+import OngoingProjects from "../Components/Dashboard/OngoingProjects";
+import ProjectDetails from "../Components/Dashboard/ProjectDetails";
+import { useEffect, useState } from "react";
+import NewProject from "../Components/marketplace/NewProject";
+import CreatorChart from "../Components/Dashboard/CreatorChart";
 
 const DashboardPage = () => {
+  const [projectKey, setProjectKey] = useState(null);
+  const [isCreator, setIsCreator] = useState(false);
+
+  useEffect(() => {
+    console.log("toggle creator");
+    setProjectKey(null);
+  }, [isCreator]);
+
+  const selectProjectDetails = (key) => {
+    setProjectKey(key);
+  };
+
+  const toggleCreatorView = () => {
+    setIsCreator(!isCreator);
+  };
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
       <NavBar />
-      <header className="m-4 flex w-[95%] flex-row items-center justify-between rounded-lg px-4 py-1 shadow-lg">
-        <button className="btn bg-creatorDark text-white">
-          Switch to Creator View 🪨✨
-        </button>
-        <div className="flex flex-row items-center gap-2">
-          <h1 className="mx-4 font-medium tracking-tight">Lifetime Stats:</h1>
-          <h2 className="rounded-lg border-2 px-3 text-center">
-            Total Jobs Done:
-            <br />
-            3,423 💼
-          </h2>
-          <h2 className="rounded-lg border-2 px-3 text-center">
-            Total Gems Earned:
-            <br />
-            13,921 💎
-          </h2>
-        </div>
-        <div className="flex flex-row items-center">
-          <p className="mx-4 font-medium tracking-tight">Quick Task:</p>
-          <button className="btn w-28 bg-minerDark leading-4 text-white hover:bg-minerLight">
-            Mine 💬
-          </button>
-          <button className="btn w-28 bg-inspectorDark leading-4 text-white hover:bg-inspectorLight">
-            Inspect 🔍
-          </button>
-        </div>
-      </header>
-      <main className=" flex w-[95%]  flex-row gap-2 rounded-lg px-4 py-1 shadow-lg">
-        <aside className="w-1/3 bg-green-200">
-          <section>
-            <p>Job Historyy</p>
-            <Chart />
+      <ToolBar toggleCreatorView={toggleCreatorView} toggle={isCreator} />
+      <main className=" flex h-screen w-[95%] flex-row gap-2 rounded-lg py-1">
+        <body className="flex w-full flex-row ">
+          <section
+            className={`flex w-[30%] flex-col items-center rounded-lg p-2 shadow-lg ${isCreator && `shadow-creatorDark`}`}
+          >
+            {isCreator && <NewProject />}
+            <OngoingProjects
+              selectProjectDetails={selectProjectDetails}
+              toggle={isCreator}
+            />
           </section>
-          <section>Wallet</section>
-        </aside>
-        <body className="flex w-full flex-row bg-red-200">
-          <section>Ongoing Tasks</section>
-          <section>Project details</section>
+          <section
+            className={`${isCreator && `shadow-creatorDark`} ml-2 w-[70%] rounded-lg p-2 shadow-lg`}
+          >
+            <ProjectDetails projectId={projectKey} toggle={isCreator} />
+          </section>
         </body>
+        {!isCreator ? (
+          <aside className="w-[40%]">
+            <section className="mb-4 flex flex-col items-center rounded-lg p-2 shadow-lg">
+              <p className="mt-2 font-medium tracking-tight">
+                Job History (7D)
+              </p>
+              <Chart />
+            </section>
+            <Wallet />
+          </aside>
+        ) : (
+          <aside className="w-[40%]">
+            <section className="mb-4 flex flex-col items-center rounded-lg p-2 shadow-lg shadow-creatorDark">
+              <p className="mt-2 font-medium tracking-tight">
+                Progress History (7D)
+              </p>
+              <CreatorChart />
+            </section>
+          </aside>
+        )}
       </main>
     </div>
   );

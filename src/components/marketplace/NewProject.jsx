@@ -152,10 +152,10 @@ const NewProject = () => {
   return (
     <div>
       <button
-        className="btn bg-green-400 text-white hover:bg-creatorDark"
+        className="btn bg-creatorDark text-white hover:bg-creatorDark"
         onClick={() => document.getElementById("new_project_modal").showModal()}
       >
-        Create Project
+        Create New Project
       </button>
       <dialog id="new_project_modal" className="modal">
         <div className="modal-box shadow-lg">
@@ -221,13 +221,6 @@ const NewProject = () => {
             />
 
             <p>Language: *</p>
-
-            {/* <InputText
-              id="language"
-              placeholder="english"
-              handleChange={textChange}
-              value={formInfo.language}
-            /> */}
 
             <select
               className="border-text text-text h-12 w-full rounded-lg border-[1px] bg-transparent p-2 hover:translate-y-[-2px] hover:border-[2px]"

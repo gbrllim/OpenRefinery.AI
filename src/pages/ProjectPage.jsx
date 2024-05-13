@@ -16,8 +16,6 @@ const ProjectPage = () => {
   const [item, setItem] = useState([]);
 
   const getProject = async () => {
-    // TODO: STEP_6_LIST_DOCS
-    // const items = [];
     const item = await getDoc({
       collection: "projects",
       key: id,

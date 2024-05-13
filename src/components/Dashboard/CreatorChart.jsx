@@ -11,43 +11,43 @@ import {
 const data = [
   {
     day: "7 May",
-    mining: 3,
-    inspecting: 4,
+    mining: 33,
+    inspecting: 24,
   },
   {
     day: "8 May",
-    mining: 4,
-    inspecting: 8,
+    mining: 160,
+    inspecting: 272,
   },
   {
     day: "9 May",
-    mining: 7,
-    inspecting: 8,
+    mining: 74,
+    inspecting: 82,
   },
   {
     day: "10 May",
-    mining: 10,
-    inspecting: 12,
+    mining: 103,
+    inspecting: 121,
   },
   {
     day: "11 May",
-    mining: 3,
-    inspecting: 9,
+    mining: 31,
+    inspecting: 92,
   },
   {
     day: "12 May",
-    mining: 7,
-    inspecting: 4,
+    mining: 78,
+    inspecting: 140,
   },
 
   {
     day: "13 May",
-    mining: 8,
-    inspecting: 14,
+    mining: 81,
+    inspecting: 242,
   },
 ];
 
-export default function Chart() {
+export default function CreatorChart() {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
