@@ -26,9 +26,13 @@ const NavBar = () => {
 
   useEffect(() => {
     checkUserRegistrationStatus();
-  }, []);
+  }, [user]);
 
   const checkUserRegistrationStatus = async () => {
+    if ([null, undefined].includes(user)) {
+      return;
+    }
+
     const userData = await listDocs({
       collection: "users",
     });

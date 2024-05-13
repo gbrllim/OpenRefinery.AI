@@ -191,6 +191,10 @@ const InspectPage = () => {
   };
 
   const advanceIndex = () => {
+    if (index + 1 > paraphrases.length) {
+      return;
+    }
+
     setIndex(index + 1);
     setCurrentCount(paraphrases[index][1]);
     setIsSubmitted(false);
@@ -240,7 +244,9 @@ const InspectPage = () => {
             <label className="mt-4 w-full text-left">Paraphrase:</label>
             <figure className=" chat-bubble w-full rounded-md bg-inspectorDark px-4 py-2">
               <p className=" animate-pulse text-3xl italic tracking-tight">
-                {paraphrases.length > 0 ? paraphrases[index][0] : "Loading..."}
+                {paraphrases.length > 0 && paraphrases[index]
+                  ? paraphrases[index][0]
+                  : "Loading..."}
               </p>
             </figure>
             {isSubmitted ? (
