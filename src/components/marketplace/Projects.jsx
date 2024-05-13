@@ -52,7 +52,13 @@ const Projects = () => {
         {items.map((item) => {
           const {
             key,
-            data: { title, miner_payout, inspector_payout, creation_date },
+            data: {
+              title,
+              miner_payout,
+              inspector_payout,
+              creation_date,
+              language,
+            },
           } = item;
 
           return (
@@ -71,7 +77,7 @@ const Projects = () => {
                   Posted: {getLastUpdatedText(creation_date)}
                 </p>
                 <p className="mb-2 min-w-56 rounded-md bg-creatorLight px-2 text-center text-sm">
-                  English
+                  {language ? language : "English"}
                 </p>
                 <figure className="flex flex-row gap-2">
                   <div className="btn mb-3 w-28 bg-minerDark leading-4 text-white hover:bg-minerDark">

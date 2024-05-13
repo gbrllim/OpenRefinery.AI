@@ -26,6 +26,7 @@ const NavBar = () => {
 
   useEffect(() => {
     checkUserRegistrationStatus();
+    document.getElementById("onboardingModal").showModal();
   }, [user]);
 
   const checkUserRegistrationStatus = async () => {

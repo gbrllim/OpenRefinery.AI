@@ -10,6 +10,7 @@ import FeedbackButton from "../Components/FeedbackButton";
 
 //-----------Providers-----------//
 import { AuthContext } from "../Auth";
+import GuidelineModal from "../Components/Inspect/GuidelineModal";
 
 const InspectPage = () => {
   const { user } = useContext(AuthContext);
@@ -230,7 +231,7 @@ const InspectPage = () => {
           <p className="translate-x-[-6px]">Project</p>
         </NavLink>
         <body className="m-28 flex w-full flex-row">
-          <section className="chat-end ml-20 mr-8 flex w-2/3 flex-col items-center">
+          <section className="chat-end ml-20 mr-8 flex w-[60%] flex-col items-center">
             <h1 className="w-full text-left text-xl tracking-tight">
               {projectTitle}
             </h1>
@@ -290,23 +291,28 @@ const InspectPage = () => {
               </p>
             </div>
           </section>
-          <side className="mr-20 flex w-1/3 flex-col items-center ">
+          <side className="mr-20 flex w-[40%] flex-col items-center">
             <h1 className="mb-2 text-xl font-medium">
               Guidelines for Inspecting 🔍
             </h1>
-            <figure className="w-full rounded-lg border-2 p-4 shadow-lg">
-              <h2 className="underline">What should I approve?</h2>
-              <ul className="list-inside list-disc">
-                <li>Main idea is present ✅</li>
-                <li>The paraphrase should reference to ✅ </li>
-                <li>Unique Expression ✅</li>
+            <figure className="flex w-full flex-col items-center rounded-lg border-2 p-4 shadow-lg">
+              <h2 className="w-full text-left underline">
+                What should I approve?
+              </h2>
+              <ul className="w-full list-inside list-disc text-left">
+                <li>Original meaning of sentence is preserved ✅</li>
+                <li>Paraphrased statement is relevant and accurate ✅ </li>
+                <li>Keywords are present ✅</li>
               </ul>
-              <h2 className="mt-4 underline">What should I reject?</h2>
-              <ul className="list-inside list-disc">
-                <li>Poor grammar ❌</li>
-                <li>Parapharse does not match subject ❌</li>
-                <li>Different train of thought ❌</li>
-              </ul>
+              <h2 className="mt-4 w-full text-left underline">
+                What should I reject?
+              </h2>
+              <ul className="mb-4 w-full list-inside list-disc text-left">
+                <li>Paraphrase simply replaces words ❌</li>
+                <li>Paraphrase changes the meaning of the original text ❌</li>
+                <li>Poor grammer, typos and awkward phrasing ❌</li>
+              </ul>{" "}
+              <GuidelineModal />
             </figure>
           </side>
         </body>
