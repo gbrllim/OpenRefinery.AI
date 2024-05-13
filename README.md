@@ -2,6 +2,8 @@
 
 Live deployment link: [https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/)
 
+![openrefinery logo](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/photo_2024-05-13_22-28-09.jpg)
+
 ## Background
 
 In today’s rapidly evolving landscape, artificial intelligence (A) has become an integral component across diverse industries, ranging from healthcare to autonomous vehicles. However, the efficacy of AI models hinges largely on the quality of their training datasets. A good training dataset will ensure that the model can produce accurate, reliable results, without being compromised by any form of AI bias. It is no wonder that there is a huge demand for the training dataset market, which is projected to grow at 24.16% annually. 
