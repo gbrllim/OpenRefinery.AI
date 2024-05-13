@@ -2,7 +2,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { getDoc, listDocs, setDoc } from "@junobuild/core";
+import { getDoc, listDocs, setDoc, deleteDoc } from "@junobuild/core";
 import { nanoid } from "nanoid";
 
 //-----------Components-----------//
@@ -170,6 +170,21 @@ const MinePage = () => {
     return isFilled() && checkForDuplicateParaphrase();
   };
 
+  const deletePara = async (item) => {
+    console.log("delete", item);
+    try {
+      // Delete item based on key
+      await deleteDoc({
+        collection: "paraphrases",
+        doc: item,
+      });
+      // Refresh list
+      await getParaphrase();
+    } catch (err) {
+      console.error("Unable to delete", err);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 1 }}
@@ -259,6 +274,14 @@ const MinePage = () => {
                         </td>
                         <td className="text-xs">
                           {getApprovalStatus(paraphrase.data.isApproved)}
+                        </td>
+                        <td>
+                          <button
+                            className="text-xs text-red-600"
+                            onClick={async () => await deletePara(paraphrase)}
+                          >
+                            Delete
+                          </button>
                         </td>
                       </tr>
                     );
