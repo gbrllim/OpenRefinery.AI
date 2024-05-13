@@ -33,7 +33,7 @@
       "answer": "Inspectors will evaluate the paraphrases submitted by their peer Miners and either approve or disapprove the submissions based on the validation criteria. Default Inspectors for the platform are the System Administrators. Miners can eventually qualify as an Inspector after completing a minimum of 100 jobs and obtaining a validation score of at least 85%."
     },
     {
-      "question": "[Inspector] What is the consensus system?"
+      "question": "[Inspector] What is the consensus system?",
       "answer": "All paraphrases will need to undergo validation check before being approved. This validation check is done by fellow users or system administrators (Inspectors). Inspectors vote to approve or disapprove a paraphrase based on set criteria. If over 80% of Inspectors approve, both the submitting Miner and Inspectors are rewarded. Conversely, if over 80% disapprove, the Miner isn't paid, but Inspectors are rewarded. If no consensus is reached, the paraphrase is rejected, and no payments are made."
     },
     {
