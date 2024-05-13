@@ -13,7 +13,9 @@ const HomePage = () => {
   return (
     <div className="flex w-full flex-col items-center">
       <NavBar />
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center"></div>
+      <div className="flex flex-col items-center justify-center md:pt-24">
+        <img src={APNG} alt="OPENREFINERY" />
       </div>
       <div className="flex flex-col justify-center items-center md:pt-24 w-full">
       <img src ={APNG} alt="OPENREFINERY" className="object-cover max-h-[250px] w-full" />
@@ -72,8 +74,8 @@ const HomePage = () => {
           <p className="tracking-tight text-center">Imagine a world where access to unbiased and <br></br> large-scale training data is not a bottleneck for AI development. </p>
         </section> 
 
-        <section className="shadow-lg min-w-[80vw] max-w-[80vw] min-h-[80vh] rounded-[60px] flex flex-col justify-center items-center">
-          <h1 className="py-2 text-5xl md:text-5xl font-bold tracking-tight md:pt-24">
+        <section className="flex min-h-[80vh] min-w-[80vw] max-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
+          <h1 className="py-2 text-5xl font-bold tracking-tight md:pt-24 md:text-5xl">
             FAQ
           </h1>
           <p className="mb-2 tracking-tight">Frequently Asked Questions</p>
@@ -81,14 +83,7 @@ const HomePage = () => {
             <FaqPage />
           </figure>
         </section>
-        {/* <body>
-          <Table />
-          <Modal />
-        </body> */}
-
         <Footer />
-
-        {/* <Background /> */}
       </div>
     </div>
   );

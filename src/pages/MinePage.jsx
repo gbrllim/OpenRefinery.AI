@@ -27,7 +27,7 @@ const MinePage = () => {
   const location = useLocation(); // Subject ID
 
   // Other variables
-  const [message, setMessage] = useState("temp response message");
+  const [isDuplicate, setIsDuplicate] = useState(false);
   const [progress, setProgress] = useState(0);
 
   // Miner transaction format
@@ -114,7 +114,7 @@ const MinePage = () => {
 
       console.log("filter paraphrases", filteredData);
 
-      const taskProgress = filteredData.length / paraphraseCount;
+      const taskProgress = filteredData.length;
       console.log(taskProgress);
 
       if (taskProgress !== Infinity) setProgress(taskProgress);
@@ -146,8 +146,28 @@ const MinePage = () => {
     });
   };
 
+  // Input validation for response
   const isFilled = () => {
     return transaction.paraphrase.trim() !== "";
+  };
+
+  // Check against existing parapharses for current subject for duplicates
+  const checkForDuplicateParaphrase = () => {
+    const newParaphrase = transaction.paraphrase.trim().toLowerCase();
+
+    // Loop through object to check
+    for (let obj of paraphrases) {
+      const existingParaphrase = obj.data.paraphrase.trim().toLowerCase();
+      if (newParaphrase === existingParaphrase) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // Valid new parapharse (not empty + not duplicate)
+  const isValidParaphrase = () => {
+    return isFilled() && checkForDuplicateParaphrase();
   };
 
   return (
@@ -197,18 +217,23 @@ const MinePage = () => {
               handleChange={textChange}
               value={transaction.paraphrase}
               onClick={updateParaphrase}
-              disabled={!isFilled()}
-              color="bg-minerDark text-white"
+              disabled={!isValidParaphrase()}
             />
-            <p className="mt-2 text-sm">{message}</p>
+            <p className="ml-1 mt-1 text-sm">
+              {!checkForDuplicateParaphrase()
+                ? "❌ Duplicate paraphrase, please enter a different answer."
+                : ""}
+            </p>
           </section>
           <side className="mr-20 w-1/3 ">
             <h1 className="text-xl font-bold">Task Progress</h1>
             <p className="text-sm tracking-tight text-minerDark">
-              {progress * 100}% mining complete
+              {progress
+                ? `${(progress / paraphraseCount) * 100}% mining complete`
+                : "Loading..."}
             </p>
             <MineProgressBar
-              progress={progress * 100}
+              progress={(progress / paraphraseCount) * 100}
               color="bg-minerDark"
               bar="bg-minerLight"
             />
