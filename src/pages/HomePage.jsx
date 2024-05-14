@@ -24,7 +24,11 @@ const HomePage = () => {
       <div className="flex flex-col items-center justify-center">
         <header className="mb-3 flex min-h-[45vh] min-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
           <h1 className="py-2 text-center text-5xl font-bold tracking-tight md:pt-2 md:text-5xl">
-            Add your human touch<br></br>to tomorrow's AI Chatbots
+            Add your{" "}
+            <span className="bg-gradient-to-r from-[#F58853] to-[#4C85FB] bg-clip-text text-transparent">
+              human touch
+            </span>
+            <br></br>to tomorrow's AI Chatbots
           </h1>
           <p className="tracking-tight">
             OpenRefinery.AI: Crowdsourcing and refining data on the blockchain
@@ -46,7 +50,7 @@ const HomePage = () => {
         </header>
         <section className="glass-effect flex min-h-[80vh] min-w-[80vw] flex-col items-center justify-center rounded-[60px] bg-gray-100 shadow-lg">
           <h1 className="py-2 text-5xl font-bold tracking-tight md:pt-24 md:text-5xl">
-            Improving Your Chatbots in 3 Steps
+            Improve Your Chatbots in 3 Steps
           </h1>{" "}
           <br></br>
           <div className="stats stats-vertical text-center shadow lg:stats-horizontal">
@@ -90,7 +94,7 @@ const HomePage = () => {
           </label>
         </section>
         <section className="flex min-h-[80vh] min-w-[80vw] max-w-[80vw] flex-col items-center justify-center rounded-[60px] shadow-lg">
-          <h1 className="py-2 text-center text-5xl font-bold tracking-tight md:pt-12 md:text-5xl">
+          <h1 className="bg-gradient-to-r from-[#F58853] to-[#4C85FB] bg-clip-text py-2 text-center text-5xl font-bold tracking-tight text-transparent md:pt-12 md:text-5xl">
             {" "}
             Humanise Data
           </h1>

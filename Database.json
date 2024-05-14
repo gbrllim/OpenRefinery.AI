@@ -4,8 +4,6 @@
       "email": "pichu@gmail.com",
       "username": "pichu",
       "profile_pic": "https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/images/w27ao-7eeha-lkeys-qhwey-tfcek-3s26f-y2zlb-tslkk-633u6-ftaxc-7qe-1f680.png",
-      "created_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
-      "joined_projects": ["<ProjectID1>", "<ProjectID2>", "<ProjectID3>"],
       "isValidator": true,
       "job_count": 2010,
       "total_gems": 420420,
@@ -16,31 +14,14 @@
     "<ProjectID1>": {
       "title": "Fintech App",
       "creator_id": "<userid1>",
-      "miners_id": ["<userid1>", "<userid1>", "<userid1>"],
-      "inspectors_id": ["<userid1>", "<userid1>", "<userid1>"],
       "subjects": ["<SubjectID1>", "<SubjectID2>", "<SubjectID3>"],
-      "languages": ["English", "Chinese"],
+      "language": "English",
       "miner_payout": 0.2,
       "inspector_payout": 0.01,
       "paraphrases_needed": 100,
       "validations_needed": 20,
-      "time_required_min": 5,
       "creation_date": "23/5/22",
       "isComplete": false
-    },
-    "<ProjectID2>": {
-      "title": "Healthcare chatbot",
-      "creator_id": "<userid1>",
-      "miners_id": ["<userid1>", "<userid1>", "<userid1>"],
-      "inspectors_id": ["<userid1>", "<userid1>", "<userid1>"],
-      "subjects": ["SubjectID1", "<SubjectID2>", "<SubjectID3>"],
-      "languages": ["English", "Spanish"],
-      "miner_payout": 0.2,
-      "inspector_payout": 0.01,
-      "paraphrases_needed": 100,
-      "validations_needed": 20,
-      "time_required_min": 15,
-      "creation_date": "23/5/22"
     }
   },
   "subject": {
