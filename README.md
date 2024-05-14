@@ -4,6 +4,8 @@
 
 Live deployment link: [https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/)
 
+(Please connect with an internet identity wallet for the best experience)
+
 ## Background
 
 In today’s rapidly evolving landscape, artificial intelligence (AI) has become an integral component across diverse industries. However, the efficacy of AI models hinges largely on the quality of their training datasets. A good training dataset will ensure that the model can produce accurate, reliable results and reduce training costs. This is why the training dataset market is projected to grow 24.16% annually.
