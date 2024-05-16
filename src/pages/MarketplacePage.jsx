@@ -3,7 +3,6 @@
 //-----------Components-----------//
 
 import NavBar from "../Components/NavBar";
-import NewProject from "../Components/marketplace/NewProject";
 import Projects from "../Components/marketplace/Projects";
 
 const MarketplacePage = () => {
@@ -13,9 +12,6 @@ const MarketplacePage = () => {
       <header className="mt-24 text-start">
         <h1 className="text-4xl font-bold">Marketplace</h1>
       </header>
-      {/* <section className="py-4">
-        <NewProject />
-      </section> */}
       <Projects />
     </div>
   );

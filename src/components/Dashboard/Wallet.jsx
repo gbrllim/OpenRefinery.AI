@@ -38,7 +38,7 @@ const Wallet = () => {
           <p>Can I add almond milk to my latte?</p>
         </div>
         <p className="ml-2 font-bold">20 💎</p>
-        <p className="mr-2">Pending</p>
+        <p className="mr-2">Approved ✅</p>
       </figure>
     </section>
   );

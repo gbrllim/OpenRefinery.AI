@@ -1,9 +1,7 @@
+//-----------Libraries-----------//
 import { getDoc } from "@junobuild/core";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-
-//-----------Components-----------//
-import { ProgressBar } from "../../Details/ProgressBar";
 
 //-----------Providers-----------//
 import { getLastUpdatedText } from "../../Utilities/formatting";

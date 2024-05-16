@@ -68,11 +68,6 @@ export default function Chart() {
         />
         <Bar dataKey="mining" fill="#F5BC73" />
         <Bar dataKey="inspecting" fill="#94B5FC" />
-        {/* <ReferenceLine
-            y={questionsGoalCount}
-            stroke="red"
-            strokeDasharray="3 3"
-          /> */}
       </BarChart>
     </ResponsiveContainer>
   );

@@ -16,18 +16,20 @@ import { AuthContext } from "../../Auth.jsx";
 const NewProject = () => {
   const { user } = useContext(AuthContext);
 
+  // Project data structure
   const [formInfo, setFormInfo] = useState({
     title: "",
     creator_id: "",
     subjects: [],
     language: "",
-    miner_payout: 0,
-    inspector_payout: 0,
-    paraphrases_needed: 0,
-    validations_needed: 0,
+    miner_payout: 10,
+    inspector_payout: 1,
+    paraphrases_needed: 20,
+    validations_needed: 10,
     creation_date: "", // Set to current date
   });
 
+  // Subject data structure
   const [subject, setSubject] = useState({
     id: "",
     title: "",
@@ -56,6 +58,7 @@ const NewProject = () => {
     });
   };
 
+  // Add subject to project
   const addSubject = (e) => {
     e.preventDefault();
 
@@ -75,7 +78,7 @@ const NewProject = () => {
     });
   };
 
-  // Input validation to prevent empty subjects
+  // Input validation to prevent empty subjects from being submitted
   const isFilled = () => {
     return subject.title.trim() !== "";
   };
@@ -176,7 +179,7 @@ const NewProject = () => {
               value={formInfo.title}
             />
 
-            <p>Miner Payout: *</p>
+            <p>Miner Payout (Gems): *</p>
             <InputNumber
               id="miner_payout"
               type="number"
@@ -187,7 +190,7 @@ const NewProject = () => {
               value={formInfo.miner_payout}
             />
 
-            <p>Inspector Payout: *</p>
+            <p>Inspector Payout (Gems): *</p>
             <InputNumber
               id="inspector_payout"
               type="number"
@@ -209,7 +212,7 @@ const NewProject = () => {
               value={formInfo.paraphrases_needed}
             />
 
-            <p>Validations Needed: *</p>
+            <p>Inspections Needed: *</p>
             <InputNumber
               id="validations_needed"
               type="number"
@@ -247,7 +250,17 @@ const NewProject = () => {
               onClick={addSubject}
               disabled={!isFilled()}
             />
-            <div></div>
+            <div className="ml-2 mr-6 h-min rounded-lg bg-creatorLight px-2 font-bold">
+              Gem cost:{" "}
+              {formInfo.subjects.length *
+                formInfo.miner_payout *
+                formInfo.paraphrases_needed +
+                formInfo.subjects.length *
+                  formInfo.inspector_payout *
+                  formInfo.paraphrases_needed *
+                  formInfo.validations_needed}{" "}
+              💎
+            </div>
             {/* Display list of subjects adding */}
             <ul>
               {formInfo.subjects.map((subject) => {

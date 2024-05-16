@@ -61,6 +61,7 @@ const NavBar = () => {
         },
       });
       console.log("User added");
+      document.getElementById("onboardingModal").close();
     } catch (error) {
       console.error("Error adding users:", error);
     }
@@ -117,8 +118,26 @@ const NavBar = () => {
       </section>
       {user !== undefined && user !== null ? (
         <details className="dropdown dropdown-end ">
-          <summary className="btn m-1 px-12 font-medium">
-            Wallet: {user && user.key.slice(-8)}
+          <summary className="btn m-1 px-2 font-medium">
+            <img
+              src={userInfo.profile_pic ? userInfo.profile_pic : gemIcon}
+              alt="profile photo"
+              className="mr-1 h-8 w-8 rounded-full bg-white"
+            />
+            <p>Wallet: {user && user.key.slice(-8)}</p>{" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#000000"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
           </summary>
           <ul className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
             <li>
@@ -153,36 +172,38 @@ const NavBar = () => {
                 />
               </label>
             </div>
-            <input
-              type="file"
-              id="profile_pic"
-              accept="image/*"
-              style={{ display: "none" }}
-              onChange={handleImageUpload}
-            />
-            <input
-              id="username"
-              placeholder="Username"
-              type="text"
-              value={userInfo.userName}
-              onChange={textChange}
-              className="input m-2 border-2 border-minerDark"
-            />
-            <input
-              id="email"
-              placeholder="Email address"
-              type="email"
-              autoComplete="email"
-              value={userInfo.email}
-              onChange={textChange}
-              className="input m-2 border-2 border-inspectorDark"
-            />
-            <button
-              onClick={addNewUser}
-              className="btn border-0 bg-creatorLight hover:translate-y-[-1px] hover:bg-green-300"
-            >
-              Save details
-            </button>
+            <form>
+              <input
+                type="file"
+                id="profile_pic"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleImageUpload}
+              />
+              <input
+                id="username"
+                placeholder="Username"
+                type="text"
+                value={userInfo.userName}
+                onChange={textChange}
+                className="input m-2 border-2 border-minerDark"
+              />
+              <input
+                id="email"
+                placeholder="Email address"
+                type="email"
+                autoComplete="email"
+                value={userInfo.email}
+                onChange={textChange}
+                className="input m-2 border-2 border-inspectorDark"
+              />
+              <button
+                onClick={addNewUser}
+                className="btn border-0 bg-creatorLight hover:translate-y-[-1px] hover:bg-green-300"
+              >
+                Save details
+              </button>
+            </form>
           </div>
           <div className="modal-action flex flex-row items-center">
             <p className="text-xs">
@@ -190,7 +211,6 @@ const NavBar = () => {
               <span className="font-bold">Settings</span>
             </p>
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button className="btn bg-slate-200 hover:translate-x-1 hover:animate-pulse hover:bg-slate-300">
                 Skip
               </button>
