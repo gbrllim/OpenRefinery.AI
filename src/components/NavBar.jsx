@@ -69,9 +69,12 @@ const NavBar = () => {
 
   const uploadProfilePic = async () => {
     try {
+      const filename = `${user.key}-${file.name}`;
+
       const url = await uploadFile({
         collection: "images",
         data: file,
+        filename,
       });
       console.log("Uploaded Profile pic", url);
       setUserInfo({ ...userInfo, profile_pic: url.downloadUrl });
@@ -172,7 +175,7 @@ const NavBar = () => {
                 />
               </label>
             </div>
-            <form>
+            <form className="flex flex-col">
               <input
                 type="file"
                 id="profile_pic"
