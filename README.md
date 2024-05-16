@@ -4,6 +4,8 @@
 
 Live deployment link: [https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/](https://vzxr6-nqaaa-aaaal-aja7q-cai.icp0.io/)
 
+(Please connect with an internet identity wallet for the best experience)
+
 ## Background
 
 In today’s rapidly evolving landscape, artificial intelligence (AI) has become an integral component across diverse industries. However, the efficacy of AI models hinges largely on the quality of their training datasets. A good training dataset will ensure that the model can produce accurate, reliable results and reduce training costs. This is why the training dataset market is projected to grow 24.16% annually.
@@ -24,7 +26,7 @@ OpenRefinery.AI is a revolutionary crowdsourcing platform that redefines the AI 
 
 - Internet Computer Protocol (ICP) operates as a self-running cloud to the internet using "canister software" on a decentralised network
 - 100% of the online services are functioning on the blockchain for complete decentralisation and cost-effectiveness
-- ICP is designed to scale horizontally, allowing applciations to handle increasing traffic and loads without sacrifcing security or performance
+- ICP is designed to scale horizontally, allowing applications to handle increasing traffic and loads without sacrificing security or performance
 - Cost of computation is put on the developers, making it affordable for users to interact with applications without having to incur gas fees with every transaction
 
 ## User Roles & Key Terms
@@ -40,7 +42,7 @@ OpenRefinery.AI is a revolutionary crowdsourcing platform that redefines the AI 
 
 - **Project Management:**
   - Flexible Project Creation: Allow for a variety of tasks, project creators can indicate their preferred payout, paraphrases needed, inspection count and language needed for more complex projects
-  - Examples galore: Miners are provided with live updates on all paraphrases curerntly pending, approved and rejected. This prevents duplicate work and encourages high quality paraphrases
+  - Examples galore: Miners are provided with live updates on all paraphrases currently pending, approved and rejected. This prevents duplicate work and encourages high quality paraphrases
   - Progress tracking: Track the progress of your projects live using our dashboard and analysis tools
 - **Decentralised Infrastructure:**
   - Web3 Authentication: Create account anonymously using Internet Identity
@@ -48,7 +50,7 @@ OpenRefinery.AI is a revolutionary crowdsourcing platform that redefines the AI 
   - Gasless transactions: Users are able to transact and interact with the blockchain without having to incur gas fees
 - **Validation Mechanism:**
   - Consensus Handling: All paraphrases generated require a strict 80% approval rate to be passed, ensuring majority consensus
-  - Approval Ratings: All users are tracked with an approval score to sure quality validation of paraphrases thereby detering bad actors
+  - Approval Ratings: All users are tracked with an approval score to sure quality validation of paraphrases thereby deterring bad actors
   - GemsGemsGems: In-house token reward system to facilitate incentives and ease of payments to Miners & Inspectors
 
 ## Roadmap
